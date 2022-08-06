@@ -163,12 +163,12 @@ python setup.py build
 python setup.py install
 </code></pre>
 <h2 id="set-up-your-quafu-account">Set up your Quafu account</h2>
-<p>To use the toolkit quafu, firstly you need to register on the <a href="http://120.46.160.173/">Quafu</a> website and get your apitoken. If you already have an account, execute the follow code to set up your account:</p>
+<p>To use the toolkit quafu, firstly you need to register on the <a href="http://120.46.160.173/">Quafu</a> website and get your apitoken <code>&lt;your API token&gt;</code>. If you already have an account, execute the follow code to set up your account.</p>
 <pre><code class="language-python">from quafu import User
 user = User()
-user.save_apitoken(&quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NTUsIme4cCI6MAsY2MjQ0NzAzNX0.HUw-X_qWbkae_esc-VxSJdP4HUjuvZJEaH762k2378&quot;)
+user.save_apitoken(&lt;your API token&gt;)
 </code></pre>
-<p>Note that you only need to save your token once and no longer need to execute above code when you use quafu after, except you want to change your account.</p>
+<p>You only need to save your token once and no longer need to execute above code when you use quafu after, except you want to change your account.</p>
 <h2 id="build-your-first-quantum-circuit">Build your first quantum circuit</h2>
 <p>Initialize a circuit with 5 qubits</p>
 <pre><code class="language-python">import numpy as np
@@ -185,6 +185,8 @@ q.rx(2, np.pi)
 q.rz(3, 0.1) 
 q.cz(2, 3) 
 </code></pre>
+<pre><code>&lt;quafu.circuits.quantum_circuit.QuantumCircuit at 0x23a358ae850&gt;
+</code></pre>
 <p>Add measurement information including qubits measured (<code>measures</code>) and the classical bits keeping the measured results (<code>cbits</code>). If there is no measurement information provided, all qubits are measured by default.  </p>
 <pre><code class="language-python">measures = [0, 1, 2, 3]
 cbits = [0, 1, 2, 3]
@@ -192,6 +194,14 @@ q.measure(measures,  cbits=cbits)
 </code></pre>
 <p>You can draw the circuit using the <a href="#quafu.circuits.quantum_circuit.QuantumCircuit.draw_circuit"><code>draw_circuit</code></a> method</p>
 <pre><code class="language-python">q.draw_circuit()
+</code></pre>
+<pre><code>q[0]  -----X-------------------------- M-&gt;c[0]
+
+q[1]  -----X-------+---RY(1.571)------ M-&gt;c[1]
+                   |                  
+q[2]  -------------*---RX(3.142)---*-- M-&gt;c[2]
+                                   CZ 
+q[3]  -RZ(0.100)-------------------+-- M-&gt;c[3]
 </code></pre>
 <p>You can also initial your quantum circuit with openqasm text. <a href="#quafu.QuantumCircuit"><code>QuantumCircuit</code></a> class provides the <a href="#quafu.circuits.quantum_circuit.QuantumCircuit.from_openqasm"><code>from_openqasm</code></a> method for initializing quantum circuit directly from openqasm.</p>
 <pre><code class="language-python">qc = QuantumCircuit(4)
@@ -205,6 +215,14 @@ cx q[0],q[3];
 &quot;&quot;&quot;
 qc.from_openqasm(test_ghz)
 qc.draw_circuit()
+</code></pre>
+<pre><code>q[0]  -H---*----*----*-- M-&gt;c[0]
+           |    |    |  
+q[1]  -----+----|----|-- M-&gt;c[1]
+                |    |  
+q[2]  ----------+----|-- M-&gt;c[2]
+                     |  
+q[3]  ---------------+-- M-&gt;c[3]
 </code></pre>
 <h2 id="submit-your-circuit">Submit your circuit</h2>
 <p>Now you are ready to submit the circuit to the experimental backend. First initial a Task object and load your account. </p>
@@ -225,11 +243,16 @@ print(res.counts) #counts
 print(res.amplitudes) #amplitude
 res.plot_amplitudes()
 </code></pre>
+<pre><code>OrderedDict([('0010', 22), ('0011', 2), ('0110', 20), ('1000', 30), ('1001', 2), ('1010', 837), ('1011', 156), ('1100', 44), ('1110', 734), ('1111', 153)])
+{'0010': 0.011, '0011': 0.001, '0110': 0.01, '1000': 0.015, '1001': 0.001, '1010': 0.4185, '1011': 0.078, '1100': 0.022, '1110': 0.367, '1111': 0.0765}
+</code></pre>
+<p><img alt="png" src="index_files/index_19_1.png" /></p>
 <p>If you want to check the correctness the execute results. Quafu provide simple circuit similator based on the qutip pacakge.</p>
 <pre><code class="language-python">from quafu.simulators.qutip_simulator import simulate
 simu_res = simulate(q)
 simu_res.plot_amplitudes(full=True)
 </code></pre>
+<p><img alt="png" src="index_files/index_21_0.png" /></p>
 <p>You can also submit the 4-bit ghz circuit <code>qc</code> built from openqasm.</p>
 <pre><code class="language-python">res = task.send(qc)
 res.plot_amplitudes()
@@ -237,6 +260,8 @@ res.plot_amplitudes()
 simu_res = simulate(qc)
 simu_res.plot_amplitudes()
 </code></pre>
+<p><img alt="png" src="index_files/index_23_0.png" /></p>
+<p><img alt="png" src="index_files/index_23_1.png" /></p>
 <p>If you don't want to plot the results for basis with zero amplitudes, set the parameter <code>full</code> in method <a href="#quafu.results.results.SimuResult.plot_amplitudes"><code>plot_amplitudes</code></a> to False. Note that this parameter is only valid for results returned by simulator.  </p>
 <h2 id="submit-circuit-and-measure-observables">Submit circuit and measure observables</h2>
 <p>Quafu provides measuring observables with an excuted quantum circuit. You can input Pauli operators that need to measure expectation values to the <a href="#quafu.tasks.tasks.Task.submit"><code>submit</code></a> method.
@@ -257,10 +282,22 @@ measures = list(range(5))
 q.measure(measures)
 
 </code></pre>
+<pre><code>q[0]  -H- M-&gt;c[0]
+
+q[1]  --- M-&gt;c[1]
+
+q[2]  -H- M-&gt;c[2]
+
+q[3]  --- M-&gt;c[3]
+
+q[4]  -H- M-&gt;c[4]
+</code></pre>
 <p>Next we set operators that need to be measured to calculate the energy expectation, and submit the circuit using <a href="#quafu.tasks.tasks.Task.submit"><code>submit</code></a> method</p>
 <pre><code class="language-python">test_Ising = [[&quot;X&quot;, [i]] for i in range(5)]
 test_Ising.extend([[&quot;ZZ&quot;, [i, i+1]] for i in range(4)])
 res, obsexp = task.submit(q, test_Ising)
+</code></pre>
+<pre><code>Job start, need measured in  [['XXXXX', [0, 1, 2, 3, 4]], ['ZZZZZ', [0, 1, 2, 3, 4]]]
 </code></pre>
 <p>The function return measurement results and operator expectations. The measurement results only contain two ExecResult object since the circuit is only executed twice, with measurement basis  [['XXXXX', [0, 1, 2, 3, 4]] and ['ZZZZZ', [0, 1, 2, 3, 4]]] respectively.</p>
 <pre><code class="language-python">
@@ -268,12 +305,17 @@ res[0].plot_amplitudes()
 res[1].plot_amplitudes()
 
 </code></pre>
+<p><img alt="png" src="index_files/index_29_0.png" /></p>
+<p><img alt="png" src="index_files/index_29_1.png" /></p>
 <p>The return operator expectations (<code>obsexp</code>) is a list with a length equal to the input operator number. We can use it to calculate the energy expectation </p>
 <pre><code class="language-python">print(obsexp)
 g = 0.5
 E = g*sum(obsexp[:5])+sum(obsexp[5:])
 print(E)
 
+</code></pre>
+<pre><code>[0.9930000000000001, -0.018000000000000016, 1.001, 0.03200000000000003, 1.001, 0.007000000000000006, 0.007000000000000006, -0.05800000000000005, -0.05800000000000005]
+1.4024999999999999
 </code></pre>
 <h2 id="api-reference">API Reference</h2>
 
@@ -4388,5 +4430,5 @@ obslist.extend([["ZZ", [i, i+1]] for i in range(4)])
 
 <!--
 MkDocs version : 1.3.0
-Build Date UTC : 2022-08-06 12:47:47.833338+00:00
+Build Date UTC : 2022-08-06 13:18:50.737857+00:00
 -->
