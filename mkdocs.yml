@@ -1,5 +1,6 @@
-site_name: Quafu-Docs
+site_name: PyQuafu-Docs
 plugins:
+  - search
   - mkdocstrings
 theme: readthedocs
 extra_javascript: 
@@ -8,3 +9,8 @@ extra_javascript:
 markdown_extensions:
   - mdx_math:
       enable_dollar_delimiter: True
+
+nav:
+  - PyQuafu:
+    - User guidence: index.md
+    - API reference: apiref.md
