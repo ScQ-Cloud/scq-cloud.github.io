@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>API - Quafu-Docs</title>
+    <title>API reference - PyQuafu-Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
@@ -13,7 +13,7 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "API";
+        var mkdocs_page_name = "API reference";
         var mkdocs_page_input_path = "apiref.md";
         var mkdocs_page_url = null;
       </script>
@@ -32,20 +32,145 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href=".." class="icon icon-home"> Quafu-Docs
-        </a>
+          <a href=".." class="icon icon-home"> PyQuafu-Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
-                </li>
-              </ul>
+              <p class="caption"><span class="caption-text">PyQuafu</span></p>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">API</a>
+                  <li class="toctree-l1"><a class="reference internal" href="..">User guidence</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">API reference</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#quafu">quafu</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#quafu.ExecResult">ExecResult</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.results.results.ExecResult.calculate_obs">calculate_obs()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.results.results.ExecResult.plot_amplitudes">plot_amplitudes()</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#quafu.QuantumCircuit">QuantumCircuit</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.__init__">__init__()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.barrier">barrier()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.cnot">cnot()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.cp">cp()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.cs">cs()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.ct">ct()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.cy">cy()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.cz">cz()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.delay">delay()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.draw_circuit">draw_circuit()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.fredkin">fredkin()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.from_openqasm">from_openqasm()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.h">h()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.id">id()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.layered_circuit">layered_circuit()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.measure">measure()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.p">p()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.rx">rx()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.ry">ry()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.rz">rz()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.s">s()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.sdg">sdg()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.sw">sw()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.swap">swap()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.sx">sx()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.sy">sy()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.t">t()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.tdg">tdg()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.to_openqasm">to_openqasm()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.toffoli">toffoli()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.w">w()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.x">x()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.xy">xy()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.y">y()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.circuits.quantum_circuit.QuantumCircuit.z">z()</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#quafu.SimuResult">SimuResult</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.results.results.SimuResult.plot_amplitudes">plot_amplitudes()</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#quafu.Task">Task</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.tasks.tasks.Task.check_valid_gates">check_valid_gates()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.tasks.tasks.Task.config">config()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.tasks.tasks.Task.get_backend_info">get_backend_info()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.tasks.tasks.Task.get_history">get_history()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.tasks.tasks.Task.load_account">load_account()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.tasks.tasks.Task.retrieve">retrieve()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.tasks.tasks.Task.retrieve_group">retrieve_group()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.tasks.tasks.Task.run">run()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.tasks.tasks.Task.send">send()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.tasks.tasks.Task.submit">submit()</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#quafu.User">User</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#quafu.users.userapi.User.save_apitoken">save_apitoken()</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#quafu.simulate">simulate()</a>
+    </li>
     </ul>
-                </li>
+                  </li>
               </ul>
       </div>
     </div>
@@ -54,13 +179,14 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="..">Quafu-Docs</a>
+          <a href="..">PyQuafu-Docs</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>API</li>
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>PyQuafu &raquo;</li><li>API reference</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -70,7 +196,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="api-reference">API Reference</h2>
+                <h1 id="api">API</h1>
 
 
 <div class="doc doc-object doc-module">
@@ -5659,7 +5785,8 @@
 <span class="normal">362</span>
 <span class="normal">363</span>
 <span class="normal">364</span>
-<span class="normal">365</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Task</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span> 
+<span class="normal">365</span>
+<span class="normal">366</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Task</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span> 
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class for submitting quantum computation task to the backend.</span>
 
@@ -5919,7 +6046,7 @@
         <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
         <span class="n">res_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">201</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">201</span><span class="p">,</span> <span class="mi">205</span><span class="p">]:</span>
             <span class="k">raise</span> <span class="n">UserError</span><span class="p">(</span><span class="n">res_dict</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">])</span>
         <span class="k">elif</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">5001</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">CircuitError</span><span class="p">(</span><span class="n">res_dict</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">])</span>
@@ -5929,6 +6056,7 @@
             <span class="k">raise</span> <span class="n">CompileError</span><span class="p">(</span><span class="n">res_dict</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">])</span> 
         <span class="k">else</span><span class="p">:</span>
             <span class="n">task_id</span> <span class="o">=</span> <span class="n">res_dict</span><span class="p">[</span><span class="s2">&quot;task_id&quot;</span><span class="p">]</span>
+
             <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">group</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_history</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">submit_history</span><span class="p">[</span><span class="n">group</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">task_id</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
@@ -6062,8 +6190,7 @@
 
       <details class="quote">
         <summary>Source code in <code>quafu\tasks\tasks.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">347</span>
-<span class="normal">348</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">348</span>
 <span class="normal">349</span>
 <span class="normal">350</span>
 <span class="normal">351</span>
@@ -6080,7 +6207,8 @@
 <span class="normal">362</span>
 <span class="normal">363</span>
 <span class="normal">364</span>
-<span class="normal">365</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">check_valid_gates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qc</span><span class="p">:</span> <span class="n">QuantumCircuit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="normal">365</span>
+<span class="normal">366</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">check_valid_gates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qc</span><span class="p">:</span> <span class="n">QuantumCircuit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check the validity of the quantum circuit.</span>
 <span class="sd">    Args:</span>
@@ -6557,8 +6685,7 @@
 
       <details class="quote">
         <summary>Source code in <code>quafu\tasks\tasks.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">295</span>
-<span class="normal">296</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">296</span>
 <span class="normal">297</span>
 <span class="normal">298</span>
 <span class="normal">299</span>
@@ -6573,7 +6700,8 @@
 <span class="normal">308</span>
 <span class="normal">309</span>
 <span class="normal">310</span>
-<span class="normal">311</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">retrieve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">taskid</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ExecResult</span><span class="p">:</span>
+<span class="normal">311</span>
+<span class="normal">312</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">retrieve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">taskid</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ExecResult</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve the results of submited task by taskid.</span>
 
@@ -6674,8 +6802,7 @@
 
       <details class="quote">
         <summary>Source code in <code>quafu\tasks\tasks.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">313</span>
-<span class="normal">314</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">314</span>
 <span class="normal">315</span>
 <span class="normal">316</span>
 <span class="normal">317</span>
@@ -6705,7 +6832,8 @@
 <span class="normal">341</span>
 <span class="normal">342</span>
 <span class="normal">343</span>
-<span class="normal">344</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">retrieve_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+<span class="normal">344</span>
+<span class="normal">345</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">retrieve_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
                    <span class="n">group</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                    <span class="n">history</span><span class="p">:</span> <span class="n">Dict</span><span class="o">=</span><span class="p">{},</span> 
                    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ExecResult</span><span class="p">]:</span>
@@ -6967,7 +7095,8 @@
 <span class="normal">290</span>
 <span class="normal">291</span>
 <span class="normal">292</span>
-<span class="normal">293</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+<span class="normal">293</span>
+<span class="normal">294</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
          <span class="n">qc</span><span class="p">:</span> <span class="n">QuantumCircuit</span><span class="p">,</span> 
          <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> 
          <span class="n">group</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -7001,7 +7130,7 @@
     <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
     <span class="n">res_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">201</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">201</span><span class="p">,</span> <span class="mi">205</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="n">UserError</span><span class="p">(</span><span class="n">res_dict</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">])</span>
     <span class="k">elif</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">5001</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">CircuitError</span><span class="p">(</span><span class="n">res_dict</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">])</span>
@@ -7011,6 +7140,7 @@
         <span class="k">raise</span> <span class="n">CompileError</span><span class="p">(</span><span class="n">res_dict</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">])</span> 
     <span class="k">else</span><span class="p">:</span>
         <span class="n">task_id</span> <span class="o">=</span> <span class="n">res_dict</span><span class="p">[</span><span class="s2">&quot;task_id&quot;</span><span class="p">]</span>
+
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">group</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">submit_history</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">submit_history</span><span class="p">[</span><span class="n">group</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">task_id</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
@@ -7508,7 +7638,7 @@ obslist.extend([["ZZ", [i, i+1]] for i in range(4)])
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href=".." class="btn btn-neutral float-left" title="User guidence"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>
@@ -7540,6 +7670,7 @@ obslist.extend([["ZZ", [i, i+1]] for i in range(4)])
     <script src="../js/theme_extra.js" defer></script>
     <script src="../js/theme.js" defer></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+      <script src="../search/main.js" defer></script>
     <script defer>
         window.onload = function () {
             SphinxRtdTheme.Navigation.enable(true);
