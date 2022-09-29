@@ -101,7 +101,7 @@ python setup.py install
 <p>To use the toolkit pyquafu, firstly you need to register on the <a href="http://quafu.baqis.ac.cn/">Quafu</a> website and get your apitoken <code>&lt;your API token&gt;</code>. If you already have an account, execute the follow code to set up your account.</p>
 <pre><code class="language-python">from quafu import User
 user = User()
-user.save_apitoken(&lt;your API token&gt;)
+user.save_apitoken(&quot;o7CgiiCZj7WBtsDhCuMduqLXl3TJaKjMxQQ-TsvBfM0.03M5kDM1kjN2YTM6ICc4VmIsAjN6ICZpJye.9JiN1IzUIJiOicGbhJCLiQ1VKJiOiAXe0Jye&quot;)
 </code></pre>
 <p>You only need to save your token once and no longer need to execute above code when you use quafu after, except you want to change your account.</p>
 <h2 id="build-your-first-quantum-circuit">Build your first quantum circuit</h2>
@@ -257,69 +257,91 @@ print(E)
 <p>First initial a task</p>
 <pre><code class="language-python">task = Task()
 task.load_account()
-task.config(backend=&quot;ScQ-S10&quot;, shots=2000, compile=True, priority=2)
+task.config(backend=&quot;ScQ-S10&quot;, shots=2000, compile=False, priority=2)
 </code></pre>
 <p>Prepare parameters of a group of tasks and send the task asynchronously.</p>
-<pre><code class="language-python">ts = range(0, 41, 4) #delay time list
-names = [&quot;%dus&quot; %t for t in ts] #name list
+<pre><code class="language-python">ts = range(0, 21, 1)
+names = [&quot;%dus&quot; %t for t in ts]
 for name, t in zip(names, ts): 
-    q = QuantumCircuit(2)
-    q.x(1)
-    q.delay(1, t, unit=&quot;us&quot;)
-    res = task.send(q, wait=False, name=name, group=&quot;Q1_T1&quot;)
+    q = QuantumCircuit(3)
+    q.x(2)
+    q.delay(2, t, unit=&quot;us&quot;)
+    q.measure([2])
+    res = task.send(q, wait=False, name=name, group=&quot;Q3_T1&quot;)
 
 </code></pre>
-<p>Here the <code>delay</code> options will idle the target qubit <code>1</code> for a duration <code>t</code> in the time unit <code>us</code>(microsecond) and do nothing. In the send function, we set <code>wait</code> too false to execute the task asynchronously, give each task a name by duration time and set all tasks to a group named "Q1_T1".</p>
+<p>Here the <code>delay</code> options will idle the target qubit <code>2</code> for a duration <code>t</code> in the time unit <code>us</code>(microsecond) and do nothing. In the send function, we set <code>wait</code> too false to execute the task asynchronously, give each task a name by duration time and set all tasks to a group named "Q3_T1".</p>
 <p>Now we can try to retrieve the group of tasks using the <a href="apiref/#quafu.tasks.tasks.Task.retrieve_group"><code>retrieve_group</code></a> method.</p>
-<pre><code class="language-python">group_res = task.retrieve_group(&quot;Q1_T1&quot;)
-amps = [res.amplitudes[&quot;01&quot;] for res in group_res]
-print(amps)  
+<pre><code class="language-python">group_res = task.retrieve_group(&quot;Q3_T1&quot;)
+amps = [res.amplitudes[&quot;1&quot;] for res in group_res]
 </code></pre>
-<pre><code>Group:  Q1_T1
+<pre><code>Group:  Q3_T1
 task_id              task_name      status    
-15FC712038B5CAAE     0us            Completed 
-15FC71300DD50BD1     4us            Running   
-15FC7130229491CF     8us            Completed 
-15FC713036E64E56     12us           Completed 
-15FC71400FBEAB8E     16us           In Queue  
-15FC71401FECB2F0     20us           In Queue  
-15FC714033B2CD5E     24us           In Queue  
-15FC71500ED001E6     28us           In Queue  
-15FC715020AF62C8     32us           In Queue  
-15FC71503653E9C9     36us           In Queue  
-15FC716010581117     40us           In Queue  
-[0.9775, 0.7745, 0.722]
+1663B8202B410F1E     0us            Completed 
+1663B83000D833A8     1us            In Queue  
+1663B830074079CF     2us            In Queue  
+1663B8300B951E51     3us            In Queue  
+1663B8300FF78259     4us            In Queue  
+1663B83014701227     5us            In Queue  
+1663B830192FB161     6us            In Queue  
+1663B8301DD58707     7us            In Queue  
+1663B8302F0B6560     8us            Running   
+1663B83033790C37     9us            Completed 
+1663B83038996527     10us           Completed 
+1663B84002C09ECE     11us           In Queue  
+1663B840078B2AE8     12us           In Queue  
+1663B84019A9B7A8     13us           In Queue  
+1663B8401E3D0EF1     14us           In Queue  
+1663B84022BFF72E     15us           In Queue  
+1663B840277610E7     16us           In Queue  
+1663B8402BFA740F     17us           In Queue  
+1663B84031D4E5A0     18us           In Queue  
+1663B840364C8B0E     19us           In Queue  
+1663B8403AE76050     20us           In Queue
 </code></pre>
-<pre><code class="language-python">group_res = task.retrieve_group(&quot;Q1_T1&quot;)
+<pre><code class="language-python">group_res = task.retrieve_group(&quot;Q3_T1&quot;)
+amps = [res.amplitudes[&quot;1&quot;] for res in group_res]
 </code></pre>
-<pre><code>Group:  Q1_T1
+<pre><code>Group:  Q3_T1
 task_id              task_name      status    
-15FC712038B5CAAE     0us            Completed 
-15FC71300DD50BD1     4us            Completed 
-15FC7130229491CF     8us            Completed 
-15FC713036E64E56     12us           Completed 
-15FC71400FBEAB8E     16us           Completed 
-15FC71401FECB2F0     20us           Completed 
-15FC714033B2CD5E     24us           Completed 
-15FC71500ED001E6     28us           Completed 
-15FC715020AF62C8     32us           Completed 
-15FC71503653E9C9     36us           Completed 
-15FC716010581117     40us           Completed
+1663B8202B410F1E     0us            Completed 
+1663B83000D833A8     1us            Completed 
+1663B830074079CF     2us            Completed 
+1663B8300B951E51     3us            Completed 
+1663B8300FF78259     4us            Completed 
+1663B83014701227     5us            Completed 
+1663B830192FB161     6us            Completed 
+1663B8301DD58707     7us            Completed 
+1663B8302F0B6560     8us            Completed 
+1663B83033790C37     9us            Completed 
+1663B83038996527     10us           Completed 
+1663B84002C09ECE     11us           Completed 
+1663B840078B2AE8     12us           Completed 
+1663B84019A9B7A8     13us           Completed 
+1663B8401E3D0EF1     14us           Completed 
+1663B84022BFF72E     15us           Completed 
+1663B840277610E7     16us           Completed 
+1663B8402BFA740F     17us           Completed 
+1663B84031D4E5A0     18us           Completed 
+1663B840364C8B0E     19us           Completed 
+1663B8403AE76050     20us           Completed
 </code></pre>
-<p>Once all tasks are completed, we can do the next step.</p>
-<pre><code class="language-python">print(amps)
-import matplotlib.pyplot as plt
-plt.plot(ts, amps, &quot;-o&quot;)
+<p>Once all tasks are completed, we can do the next step to get <script type="math/tex">T_1</script>.</p>
+<pre><code class="language-python">import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+def func(x, a, b):
+    return a*np.exp(-b*x)
+
+paras, pconv = curve_fit(func, ts, amps)
+plt.plot(ts, amps, &quot;o&quot;)
+plt.plot(ts, func(ts, *paras), &quot;--&quot;)
+plt.xlabel(&quot;$t (\mu s)$&quot;)
+plt.ylabel(&quot;prob&quot;)
+plt.text(16, 0.9, r&quot;$T_1=%.2f \mu s$&quot; %(1/paras[1]))
 </code></pre>
-<pre><code>[0.9775, 0.9045, 0.7745, 0.722, 0.4295, 0.5205, 0.561, 0.481, 0.5, 0.492, 0.4275]
-
-
-
-
-
-[&lt;matplotlib.lines.Line2D at 0x1fe32568c10&gt;]
+<pre><code>Text(16, 0.9, '$T_1=19.69 \\mu s$')
 </code></pre>
-<p><img alt="png" src="index_files/index_40_2.png" /></p>
+<p><img alt="png" src="index_files/index_40_1.png" /></p>
 <p>Note that task retrieving relies on the submit history saved in the <code>task</code> object. If your <code>task</code> object is changed or detroyed in the memory, you may get the wrong results. Suppose you have to close your program after submitting tasks, you need first save the history associated to the <code>task</code> object.</p>
 <pre><code class="language-python">old_history = task.get_history() #get the history of task
 #save the history to disk if you need!
@@ -329,27 +351,37 @@ plt.plot(ts, amps, &quot;-o&quot;)
 #do load...
 newtask = Task()
 newtask.load_account()
-group_res = newtask.retrieve_group(&quot;Q1_T1&quot;, history=old_history)
+group_res = newtask.retrieve_group(&quot;Q3_T1&quot;, history=old_history)
 </code></pre>
-<pre><code>Group:  Q1_T1
+<pre><code>Group:  Q3_T1
 task_id              task_name      status    
-15FC712038B5CAAE     0us            Completed 
-15FC71300DD50BD1     4us            Completed 
-15FC7130229491CF     8us            Completed 
-15FC713036E64E56     12us           Completed 
-15FC71400FBEAB8E     16us           Completed 
-15FC71401FECB2F0     20us           Completed 
-15FC714033B2CD5E     24us           Completed 
-15FC71500ED001E6     28us           Completed 
-15FC715020AF62C8     32us           Completed 
-15FC71503653E9C9     36us           Completed 
-15FC716010581117     40us           Completed
+1663B8202B410F1E     0us            Completed 
+1663B83000D833A8     1us            Completed 
+1663B830074079CF     2us            Completed 
+1663B8300B951E51     3us            Completed 
+1663B8300FF78259     4us            Completed 
+1663B83014701227     5us            Completed 
+1663B830192FB161     6us            Completed 
+1663B8301DD58707     7us            Completed 
+1663B8302F0B6560     8us            Completed 
+1663B83033790C37     9us            Completed 
+1663B83038996527     10us           Completed 
+1663B84002C09ECE     11us           Completed 
+1663B840078B2AE8     12us           Completed 
+1663B84019A9B7A8     13us           Completed 
+1663B8401E3D0EF1     14us           Completed 
+1663B84022BFF72E     15us           Completed 
+1663B840277610E7     16us           Completed 
+1663B8402BFA740F     17us           Completed 
+1663B84031D4E5A0     18us           Completed 
+1663B840364C8B0E     19us           Completed 
+1663B8403AE76050     20us           Completed
 </code></pre>
 <p>Finally, you can also retrieve a single task using its unique <code>task_id</code>.</p>
-<pre><code class="language-python">res_0us = newtask.retrieve(old_history[&quot;Q1_T1&quot;][0])
+<pre><code class="language-python">res_0us = newtask.retrieve(old_history[&quot;Q3_T1&quot;][0])
 print(res_0us.amplitudes)
 </code></pre>
-<pre><code>{'01': 0.9775, '11': 0.0225}
+<pre><code>{'0': 0.014, '1': 0.986}
 </code></pre>
               
             </div>
