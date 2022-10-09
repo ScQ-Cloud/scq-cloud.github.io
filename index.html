@@ -101,7 +101,7 @@ python setup.py install
 <p>To use the toolkit pyquafu, firstly you need to register on the <a href="http://quafu.baqis.ac.cn/">Quafu</a> website and get your apitoken <code>&lt;your API token&gt;</code>. If you already have an account, execute the follow code to set up your account.</p>
 <pre><code class="language-python">from quafu import User
 user = User()
-user.save_apitoken(&quot;o7CgiiCZj7WBtsDhCuMduqLXl3TJaKjMxQQ-TsvBfM0.03M5kDM1kjN2YTM6ICc4VmIsAjN6ICZpJye.9JiN1IzUIJiOicGbhJCLiQ1VKJiOiAXe0Jye&quot;)
+user.save_apitoken(&quot;&lt;your API token&gt;&quot;)
 </code></pre>
 <p>You only need to save your token once and no longer need to execute above code when you use quafu after, except you want to change your account.</p>
 <h2 id="build-your-first-quantum-circuit">Build your first quantum circuit</h2>
@@ -217,15 +217,15 @@ measures = list(range(5))
 q.measure(measures)
 
 </code></pre>
-<pre><code>q[0]  -H- M-&gt;c[0]
+<pre><code>q[0]  --H-- M-&gt;c[0]
 
-q[1]  --- M-&gt;c[1]
+q[1]  ----- M-&gt;c[1]
 
-q[2]  -H- M-&gt;c[2]
+q[2]  --H-- M-&gt;c[2]
 
-q[3]  --- M-&gt;c[3]
+q[3]  ----- M-&gt;c[3]
 
-q[4]  -H- M-&gt;c[4]
+q[4]  --H-- M-&gt;c[4]
 </code></pre>
 <p>Next we set operators that need to be measured to calculate the energy expectation, and submit the circuit using <a href="apiref/#quafu.tasks.tasks.Task.submit"><code>submit</code></a> method</p>
 <pre><code class="language-python">test_Ising = [[&quot;X&quot;, [i]] for i in range(5)]
@@ -249,8 +249,8 @@ E = g*sum(obsexp[:5])+sum(obsexp[5:])
 print(E)
 
 </code></pre>
-<pre><code>[0.9930000000000001, -0.018000000000000016, 1.001, 0.03200000000000003, 1.001, 0.007000000000000006, 0.007000000000000006, -0.05800000000000005, -0.05800000000000005]
-1.4024999999999999
+<pre><code>[1.0, 0.046999999999999986, 1.0, 0.03699999999999998, 0.998, 0.00899999999999995, 0.08499999999999996, 0.08299999999999996, 0.008999999999999952]
+1.7269999999999999
 </code></pre>
 <h2 id="submit-task-asynchronously">Submit task asynchronously</h2>
 <p>In the above examples, you have to wait for the result to return and cannot do other jobs continually. Now you can choose to set the parameter <code>wait</code> in <a href="apiref/#quafu.tasks.tasks.Task.send"><code>send</code></a> function to <code>false</code> to submit the task asynchronously and do not need it to return. When you need, you can retrieve the results at any time and check the status using the <a href="apiref/#quafu.tasks.tasks.Task.retrieve"><code>retrieve</code></a> function. Here, we use the example that measuring the qubit decoherence time <script type="math/tex">T_1</script> to show the detailed usage.</p>
