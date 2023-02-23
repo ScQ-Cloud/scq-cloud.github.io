@@ -88,11 +88,11 @@
               
                 <h1 id="user-guidence">User Guidence</h1>
 <h2 id="installation">Installation</h2>
-<p>Th installation of Pyquafu need python version &gt;= 3.8. Run following codes in command line</p>
+<p>Run following codes in command line</p>
 <pre><code>pip install pyquafu 
 </code></pre>
 <h2 id="set-up-your-quafu-account">Set up your Quafu account</h2>
-<p>To use the toolkit pyquafu, firstly register on the <a href="http://quafu.baqis.ac.cn/">Quafu</a> website and get your apitoken <code>&lt;your API token&gt;</code>. If you already have an account, execute the follow code to set up your account.</p>
+<p>To use the toolkit pyquafu, firstly you need to register on the <a href="http://quafu.baqis.ac.cn/">Quafu</a> website and get your apitoken <code>&lt;your API token&gt;</code>. If you already have an account, execute the follow code to set up your account.</p>
 <pre><code class="language-python">from quafu import User
 user = User()
 user.save_apitoken(&quot;&lt;your API token&gt;&quot;)
@@ -114,7 +114,7 @@ q.rx(2, np.pi)
 q.rz(3, 0.1) 
 q.cz(2, 3) 
 </code></pre>
-<pre><code>&lt;quafu.circuits.quantum_circuit.QuantumCircuit at 0x1fa56e848b0&gt;
+<pre><code>&lt;quafu.circuits.quantum_circuit.QuantumCircuit at 0x7f90e0505280&gt;
 </code></pre>
 <p>Add measurement information including qubits measured (<code>measures</code>) and the classical bits keeping the measured results (<code>cbits</code>). If there is no measurement information provided, all qubits are measured by default.  </p>
 <pre><code class="language-python">measures = [0, 1, 2, 3]
@@ -132,7 +132,7 @@ q[2]  ---------------*----RX(3.142)----*-- M-&gt;c[2]
                                        |  
 q[3]  --RZ(0.100)----------------------Z-- M-&gt;c[3]
 </code></pre>
-<p>You can also initial quantum circuit with openqasm text. <a href="apiref/#quafu.QuantumCircuit"><code>QuantumCircuit</code></a> class provides the <a href="apiref/#quafu.circuits.quantum_circuit.QuantumCircuit.from_openqasm"><code>from_openqasm</code></a> method for initializing quantum circuit directly from openqasm.</p>
+<p>You can also initial your quantum circuit with openqasm text. <a href="apiref/#quafu.QuantumCircuit"><code>QuantumCircuit</code></a> class provides the <a href="apiref/#quafu.circuits.quantum_circuit.QuantumCircuit.from_openqasm"><code>from_openqasm</code></a> method for initializing quantum circuit directly from openqasm.</p>
 <pre><code class="language-python">qc = QuantumCircuit(4)
 test_ghz = &quot;&quot;&quot;OPENQASM 2.0;
 include &quot;qelib1.inc&quot;;
@@ -159,8 +159,8 @@ q[3]  -----------------+-- M-&gt;c[3]
 task = Task()
 task.load_account()
 </code></pre>
-<p>You can configure task properties using the <a href="apiref/#quafu.tasks.tasks.Task.config"><code>config</code></a> method. Here we choose the backend (<code>backend</code>) as <code>ScQ-P10</code>, the single shots number (<code>shots</code>) as 2000 and to compile the circuit on backend (<code>compile</code>).</p>
-<pre><code class="language-python">task.config(backend=&quot;ScQ-P10&quot;, shots=2000, compile=True)
+<p>You can configure your task properties using the <a href="apiref/#quafu.tasks.tasks.Task.config"><code>config</code></a> method. Here we choose the backend (<code>backend</code>) as <code>ScQ-P10</code>, the single shots number (<code>shots</code>) as 2000 and to compile the circuit on backend (<code>compile</code>).</p>
+<pre><code class="language-python">task.config(backend=&quot;ScQ-P20&quot;, shots=2000, compile=True)
 </code></pre>
 <p>If you set the <code>compile</code> parameter to <code>False</code>, make sure that you know the topology of the backend well and submit valid circuit.</p>
 <p>Send the quantum circuit to the backend. Here we send circuit <code>q</code>.</p>
@@ -169,32 +169,32 @@ task.load_account()
 <p>You can use the returned results to check the count and amplitude on each measured bit string. The output bits are arranged as 0, 1, 2,... from left to the right.</p>
 <pre><code class="language-python">
 print(res.counts) #counts
-print(res.amplitudes) #amplitude
-res.plot_amplitudes()
+print(res.probabilities) #probabilities
+res.plot_probabilities()
 </code></pre>
-<pre><code>OrderedDict([('0010', 22), ('0011', 2), ('0110', 20), ('1000', 30), ('1001', 2), ('1010', 837), ('1011', 156), ('1100', 44), ('1110', 734), ('1111', 153)])
-{'0010': 0.011, '0011': 0.001, '0110': 0.01, '1000': 0.015, '1001': 0.001, '1010': 0.4185, '1011': 0.078, '1100': 0.022, '1110': 0.367, '1111': 0.0765}
+<pre><code>OrderedDict([('0010', 3), ('0110', 15), ('1001', 12), ('1010', 1015), ('1011', 13), ('1110', 932), ('1111', 10)])
+{'0010': 0.0015, '0110': 0.0075, '1001': 0.006, '1010': 0.5075, '1011': 0.0065, '1110': 0.466, '1111': 0.005}
 </code></pre>
 <p><img alt="png" src="index_files/index_19_1.png" /></p>
-<p>If you want to check the correctness the execute results. Quafu provide simple circuit similator</p>
+<p>If you want to check the correctness the execute results. Quafu provide simple circuit similator based on sparse matrix.</p>
 <pre><code class="language-python">from quafu import simulate
-simu_res = simulate(q, output=&quot;amplitudes&quot;)
-simu_res.plot_amplitudes(full=True)
+simu_res = simulate(q, output=&quot;probabilities&quot;)
+simu_res.plot_probabilities(full=True)
 </code></pre>
 <p><img alt="png" src="index_files/index_21_0.png" /></p>
 <p>You can also submit the 4-bit ghz circuit <code>qc</code> built from openqasm.</p>
 <pre><code class="language-python">res = task.send(qc)
-res.plot_amplitudes()
+res.plot_probabilities()
 
 simu_res = simulate(qc)
-simu_res.plot_amplitudes(full=True)
+simu_res.plot_probabilities(full=True)
 </code></pre>
 <p><img alt="png" src="index_files/index_23_0.png" /></p>
 <p><img alt="png" src="index_files/index_23_1.png" /></p>
-<p>If you don't want to plot the results for basis with zero amplitudes, set the parameter <code>full</code> in method <a href="apiref/#quafu.results.results.SimuResult.plot_amplitudes"><code>plot_amplitudes</code></a> to False. Note that this parameter is only valid for results returned by simulator.  </p>
+<p>If you don't want to plot the results for basis with zero probabilites, set the parameter <code>full</code> in method <a href="apiref/#quafu.results.results.SimuResult.plot_probabilities"><code>plot_probabilities</code></a> to False. Note that this parameter is only valid for results returned by simulator.  </p>
 <h2 id="submit-circuit-and-measure-observables">Submit circuit and measure observables</h2>
-<p>Quafu provides measuring observables with an executed quantum circuit. You can input Pauli operators that need to measure expectation values to the <a href="apiref/#quafu.tasks.tasks.Task.submit"><code>submit</code></a> method.
-For example, you can input [["XYX", [0, 1, 3]], ["Z", [1]]] to calcuate the expectation of operators <script type="math/tex">\sigma^x_0\sigma^y_1\sigma^x_3</script> and <script type="math/tex">\sigma^z_1</script>.
+<p>Quafu provides measuring observables with an excuted quantum circuit. You can input Pauli operators that need to measure expectation values to the <a href="apiref/#quafu.tasks.tasks.Task.submit"><code>submit</code></a> method.
+For example, you can input [["XYX", [0, 1, 2]], ["Z", [1]]] to calcuate the expectation of operators <script type="math/tex">\sigma^x_0\sigma^y_1\sigma^x_2</script> and <script type="math/tex">\sigma^z_1</script>.
 The <a href="apiref/#quafu.tasks.tasks.Task.submit"><code>submit</code></a> method will minimize the executing times of the circuit with different measurement basis that can calculate all expectations of input operators. </p>
 <p>Here we show how to measure the energy expection of the Ising chain
 <script type="math/tex; mode=display">H=\sum_i \sigma^z_i \sigma^z_{i+1} + g \sum_i \sigma^x_i.</script>
@@ -230,8 +230,8 @@ res, obsexp = task.submit(q, test_Ising)
 </code></pre>
 <p>The function return measurement results and operator expectations. The measurement results only contain two ExecResult object since the circuit is only executed twice, with measurement basis  [['XXXXX', [0, 1, 2, 3, 4]] and ['ZZZZZ', [0, 1, 2, 3, 4]]] respectively.</p>
 <pre><code class="language-python">
-res[0].plot_amplitudes()
-res[1].plot_amplitudes()
+res[0].plot_probabilities()
+res[1].plot_probabilities()
 
 </code></pre>
 <p><img alt="png" src="index_files/index_29_0.png" /></p>
@@ -267,7 +267,7 @@ for name, t in zip(names, ts):
 <p>Here the <code>delay</code> options will idle the target qubit <code>2</code> for a duration <code>t</code> in the time unit <code>us</code>(microsecond) and do nothing. In the send function, we set <code>wait</code> too false to execute the task asynchronously, give each task a name by duration time and set all tasks to a group named "Q3_T1".</p>
 <p>Now we can try to retrieve the group of tasks using the <a href="apiref/#quafu.tasks.tasks.Task.retrieve_group"><code>retrieve_group</code></a> method.</p>
 <pre><code class="language-python">group_res = task.retrieve_group(&quot;Q3_T1&quot;)
-amps = [res.amplitudes[&quot;1&quot;] for res in group_res]
+probs = [res.probabilities[&quot;1&quot;] for res in group_res]
 </code></pre>
 <pre><code>Group:  Q3_T1
 task_id              task_name      status    
@@ -294,7 +294,7 @@ task_id              task_name      status
 1663B8403AE76050     20us           In Queue
 </code></pre>
 <pre><code class="language-python">group_res = task.retrieve_group(&quot;Q3_T1&quot;)
-amps = [res.amplitudes[&quot;1&quot;] for res in group_res]
+probs = [res.probabilities[&quot;1&quot;] for res in group_res]
 </code></pre>
 <pre><code>Group:  Q3_T1
 task_id              task_name      status    
@@ -326,8 +326,8 @@ from scipy.optimize import curve_fit
 def func(x, a, b):
     return a*np.exp(-b*x)
 
-paras, pconv = curve_fit(func, ts, amps)
-plt.plot(ts, amps, &quot;o&quot;)
+paras, pconv = curve_fit(func, ts, probs)
+plt.plot(ts, probs, &quot;o&quot;)
 plt.plot(ts, func(ts, *paras), &quot;--&quot;)
 plt.xlabel(&quot;$t (\mu s)$&quot;)
 plt.ylabel(&quot;prob&quot;)
@@ -373,7 +373,7 @@ task_id              task_name      status
 </code></pre>
 <p>Finally, you can also retrieve a single task using its unique <code>task_id</code>.</p>
 <pre><code class="language-python">res_0us = newtask.retrieve(old_history[&quot;Q3_T1&quot;][0])
-print(res_0us.amplitudes)
+print(res_0us.probabilities)
 </code></pre>
 <pre><code>{'0': 0.014, '1': 0.986}
 </code></pre>
