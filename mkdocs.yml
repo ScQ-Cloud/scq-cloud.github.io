@@ -12,5 +12,5 @@ markdown_extensions:
 
 nav:
   - PyQuafu:
-    - User guidence: index.md
+    - User guide: index.md
     - API reference: apiref.md
