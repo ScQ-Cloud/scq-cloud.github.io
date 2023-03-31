@@ -248,8 +248,7 @@ print(E)
 <p>In the above examples, you have to wait for the result to return and cannot do other jobs continually. Now you can choose to set the parameter <code>wait</code> in <a href="apiref/#quafu.tasks.tasks.Task.send"><code>send</code></a> function to <code>false</code> to submit the task asynchronously. When you need, you can retrieve the results at any time and check the status using the <a href="apiref/#quafu.tasks.tasks.Task.retrieve"><code>retrieve</code></a> function. Here, we use the example that measuring the qubit decoherence time <script type="math/tex">T_1</script> to show the detailed usage.</p>
 <p>First initial a task</p>
 <pre><code class="language-python">task = Task()
-task.load_account()
-task.config(backend=&quot;ScQ-S10&quot;, shots=2000, compile=False, priority=2)
+task.config(backend=&quot;ScQ-P10&quot;, shots=2000, compile=False, priority=2)
 </code></pre>
 <p>Prepare parameters of a group of tasks and send the task asynchronously.</p>
 <pre><code class="language-python">ts = range(0, 21, 1)
