@@ -20,7 +20,7 @@
     
     <script src="js/jquery-3.6.0.min.js" defer></script>
     <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
+    <script src="js/html5shiv.min.js"></script>
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
       <script>hljs.initHighlightingOnLoad();</script> 
@@ -32,9 +32,9 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="." class="icon icon-home"> PyQuafu-Docs
+          <a href="../.." class="icon icon-home"> PyQuafu-Docs
         </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
@@ -43,7 +43,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">PyQuafu</span></p>
               <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href=".">User guide</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="../..">User guide</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
     </li>
@@ -59,7 +59,7 @@
     </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="apiref/">API reference</a>
+                  <li class="toctree-l1"><a class="reference internal" href="apiref">API reference</a>
                   </li>
               </ul>
       </div>
@@ -69,13 +69,13 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href=".">PyQuafu-Docs</a>
+          <a href="../..">PyQuafu-Docs</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>PyQuafu &raquo;</li><li>User guide</li>
     <li class="wy-breadcrumbs-aside">
     </li>
@@ -105,7 +105,7 @@ from quafu import QuantumCircuit
 
 q = QuantumCircuit(5)
 </code></pre>
-<p>Add quantum gates. For quantum gates Quafu supports, please check the API reference for <a href="apiref/#quafu.QuantumCircuit"><code>QuantumCircuit</code></a></p>
+<p>Add quantum gates. For quantum gates Quafu supports, please check the API reference for <a href="apiref#quafu.QuantumCircuit"><code>QuantumCircuit</code></a></p>
 <pre><code class="language-python">q.x(0)
 q.x(1) 
 q.cnot(2, 1) 
@@ -121,7 +121,7 @@ q.cz(2, 3)
 cbits = [0, 1, 2, 3]
 q.measure(measures,  cbits=cbits)
 </code></pre>
-<p>You can draw the circuit using the <a href="apiref/#quafu.circuits.quantum_circuit.QuantumCircuit.draw_circuit"><code>draw_circuit</code></a> method and use <code>width</code> parameter to adjust the length of the circuit.</p>
+<p>You can draw the circuit using the <a href="apiref#quafu.circuits.quantum_circuit.QuantumCircuit.draw_circuit"><code>draw_circuit</code></a> method and use <code>width</code> parameter to adjust the length of the circuit.</p>
 <pre><code class="language-python">q.draw_circuit(width=4)
 </code></pre>
 <pre><code>q[0]  ------X----------------------------- M-&gt;c[0]
@@ -132,7 +132,7 @@ q[2]  ---------------*----RX(3.142)----*-- M-&gt;c[2]
                                        |  
 q[3]  --RZ(0.100)----------------------Z-- M-&gt;c[3]
 </code></pre>
-<p>You can also initialize your quantum circuit with openqasm text. <a href="apiref/#quafu.QuantumCircuit"><code>QuantumCircuit</code></a> class provides the <a href="apiref/#quafu.circuits.quantum_circuit.QuantumCircuit.from_openqasm"><code>from_openqasm</code></a> method for initializing quantum circuits directly from openqasm.</p>
+<p>You can also initialize your quantum circuit with openqasm text. <a href="apiref#quafu.QuantumCircuit"><code>QuantumCircuit</code></a> class provides the <a href="apiref#quafu.circuits.quantum_circuit.QuantumCircuit.from_openqasm"><code>from_openqasm</code></a> method for initializing quantum circuits directly from openqasm.</p>
 <pre><code class="language-python">qc = QuantumCircuit(4)
 test_ghz = &quot;&quot;&quot;OPENQASM 2.0;
 include &quot;qelib1.inc&quot;;
@@ -158,7 +158,7 @@ q[3]  -----------------+-- M-&gt;c[3]
 <pre><code class="language-python">from quafu import Task
 task = Task()
 </code></pre>
-<p>You can configure your task properties using the <a href="apiref/#quafu.tasks.tasks.Task.config"><code>config</code></a> method. Here we choose the backend (<code>backend</code>) as <code>ScQ-P18</code>, the single shots number (<code>shots</code>) as 2000 and compile the circuit on the backend (<code>compile</code>).</p>
+<p>You can configure your task properties using the <a href="apiref#quafu.tasks.tasks.Task.config"><code>config</code></a> method. Here we choose the backend (<code>backend</code>) as <code>ScQ-P18</code>, the single shots number (<code>shots</code>) as 2000 and compile the circuit on the backend (<code>compile</code>).</p>
 <pre><code class="language-python">task.config(backend=&quot;ScQ-P18&quot;, shots=2000, compile=True)
 </code></pre>
 <p>If you set the <code>compile</code> parameter to <code>False</code>, make sure that you know the topology of the backend well and submit a valid circuit.</p>
@@ -190,11 +190,11 @@ simu_res.plot_probabilities(full=True)
 </code></pre>
 <p><img alt="png" src="index_files/index_23_0.png" /></p>
 <p><img alt="png" src="index_files/index_23_1.png" /></p>
-<p>If you don't want to plot the results for basis with zero probabilities, set the parameter <code>full</code> in method <a href="apiref/#quafu.results.results.SimuResult.plot_probabilities"><code>plot_probabilities</code></a> to False. Note that this parameter is only valid for results returned by the simulator.  </p>
+<p>If you don't want to plot the results for basis with zero probabilities, set the parameter <code>full</code> in method <a href="apiref#quafu.results.results.SimuResult.plot_probabilities"><code>plot_probabilities</code></a> to False. Note that this parameter is only valid for results returned by the simulator.  </p>
 <h2 id="submit-circuit-and-measure-observables">Submit circuit and measure observables</h2>
-<p>Quafu provides measuring observables with an executed quantum circuit. You can input Pauli operators that need to measure expectation values to the <a href="apiref/#quafu.tasks.tasks.Task.submit"><code>submit</code></a> method.
+<p>Quafu provides measuring observables with an executed quantum circuit. You can input Pauli operators that need to measure expectation values to the <a href="apiref#quafu.tasks.tasks.Task.submit"><code>submit</code></a> method.
 For example, you can input [["XYX", [0, 1, 2]], ["Z", [1]]] to calculate the expectation of operators <script type="math/tex">\sigma^x_0\sigma^y_1\sigma^x_2</script> and <script type="math/tex">\sigma^z_1</script>.
-The <a href="apiref/#quafu.tasks.tasks.Task.submit"><code>submit</code></a> method will minimize the executing times of the circuit with different measurement basis that can calculate all expectations of input operators. </p>
+The <a href="apiref#quafu.tasks.tasks.Task.submit"><code>submit</code></a> method will minimize the executing times of the circuit with different measurement basis that can calculate all expectations of input operators. </p>
 <p>Here we show how to measure the energy expectation of the Ising chain
 <script type="math/tex; mode=display">H=\sum_i \sigma^z_i \sigma^z_{i+1} + g \sum_i \sigma^x_i.</script>
 First, we initialize a circuit with three Hadamard gate</p>
@@ -219,7 +219,7 @@ q[3]  ----- M-&gt;c[3]
 
 q[4]  --H-- M-&gt;c[4]
 </code></pre>
-<p>Next, we set operators that need to be measured to calculate the energy expectation, and submit the circuit using <a href="apiref/#quafu.tasks.tasks.Task.submit"><code>submit</code></a> method</p>
+<p>Next, we set operators that need to be measured to calculate the energy expectation, and submit the circuit using <a href="apiref#quafu.tasks.tasks.Task.submit"><code>submit</code></a> method</p>
 <pre><code class="language-python">test_Ising = [[&quot;X&quot;, [i]] for i in range(5)]
 test_Ising.extend([[&quot;ZZ&quot;, [i, i+1]] for i in range(4)])
 res, obsexp = task.submit(q, test_Ising)
@@ -245,7 +245,7 @@ print(E)
 1.7269999999999999
 </code></pre>
 <h2 id="submit-task-asynchronously">Submit task asynchronously</h2>
-<p>In the above examples, you have to wait for the result to return and cannot do other jobs continually. Now you can choose to set the parameter <code>wait</code> in <a href="apiref/#quafu.tasks.tasks.Task.send"><code>send</code></a> function to <code>false</code> to submit the task asynchronously. When you need, you can retrieve the results at any time and check the status using the <a href="apiref/#quafu.tasks.tasks.Task.retrieve"><code>retrieve</code></a> function. Here, we use the example that measuring the qubit decoherence time <script type="math/tex">T_1</script> to show the detailed usage.</p>
+<p>In the above examples, you have to wait for the result to return and cannot do other jobs continually. Now you can choose to set the parameter <code>wait</code> in <a href="apiref#quafu.tasks.tasks.Task.send"><code>send</code></a> function to <code>false</code> to submit the task asynchronously. When you need, you can retrieve the results at any time and check the status using the <a href="apiref#quafu.tasks.tasks.Task.retrieve"><code>retrieve</code></a> function. Here, we use the example that measuring the qubit decoherence time <script type="math/tex">T_1</script> to show the detailed usage.</p>
 <p>First initial a task</p>
 <pre><code class="language-python">task = Task()
 task.config(backend=&quot;ScQ-P10&quot;, shots=2000, compile=False, priority=2)
@@ -262,7 +262,7 @@ for name, t in zip(names, ts):
 
 </code></pre>
 <p>Here the <code>delay</code> options will idle the target qubit <code>2</code> for a duration <code>t</code> in the time unit <code>us</code>(microsecond) and do nothing. In the send function, we set <code>wait</code> to false to execute the task asynchronously, give each task a name by duration time and set all tasks to a group named "Q3_T1".</p>
-<p>Now we can try to retrieve the group of tasks using the <a href="apiref/#quafu.tasks.tasks.Task.retrieve_group"><code>retrieve_group</code></a> method.</p>
+<p>Now we can try to retrieve the group of tasks using the <a href="apiref#quafu.tasks.tasks.Task.retrieve_group"><code>retrieve_group</code></a> method.</p>
 <pre><code class="language-python">group_res = task.retrieve_group(&quot;Q3_T1&quot;)
 probs = [res.probabilities[&quot;1&quot;] for res in group_res]
 </code></pre>
@@ -378,7 +378,7 @@ print(res_0us.probabilities)
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="apiref/" class="btn btn-neutral float-right" title="API reference">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="apiref" class="btn btn-neutral float-right" title="API reference">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -402,7 +402,7 @@ print(res_0us.probabilities)
     
     
     
-      <span><a href="apiref/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="apiref" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
