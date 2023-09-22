@@ -45,31 +45,46 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/quafu_doc_0.3.5/quafu_doc_0_3_5.html">User Guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#quafu.QuantumCircuit"><code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#quafu.QuantumCircuit.add_gate"><code class="docutils literal notranslate"><span class="pre">QuantumCircuit.add_gate()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#quafu.QuantumCircuit.barrier"><code class="docutils literal notranslate"><span class="pre">QuantumCircuit.barrier()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#quafu.QuantumCircuit.cnot"><code class="docutils literal notranslate"><span class="pre">QuantumCircuit.cnot()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quantum-circuit">Quantum Circuit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quafu.QuantumCircuit"><code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quafu.QuantumCircuit.add_gate"><code class="docutils literal notranslate"><span class="pre">QuantumCircuit.add_gate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quafu.QuantumCircuit.barrier"><code class="docutils literal notranslate"><span class="pre">QuantumCircuit.barrier()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quafu.QuantumCircuit.cnot"><code class="docutils literal notranslate"><span class="pre">QuantumCircuit.cnot()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#quafu.User"><code class="docutils literal notranslate"><span class="pre">User</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#quafu.User.get_available_backends"><code class="docutils literal notranslate"><span class="pre">User.get_available_backends()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#quafu.User.save_apitoken"><code class="docutils literal notranslate"><span class="pre">User.save_apitoken()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#quafu.Task"><code class="docutils literal notranslate"><span class="pre">Task</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#quafu.Task.shots"><code class="docutils literal notranslate"><span class="pre">Task.shots</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#quafu.Task.compile"><code class="docutils literal notranslate"><span class="pre">Task.compile</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#quafu.Task.tomo"><code class="docutils literal notranslate"><span class="pre">Task.tomo</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#quafu.Task.user"><code class="docutils literal notranslate"><span class="pre">Task.user</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#quafu.Task.priority"><code class="docutils literal notranslate"><span class="pre">Task.priority</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#quafu.Task.submit_history"><code class="docutils literal notranslate"><span class="pre">Task.submit_history</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#quafu.Task.backend"><code class="docutils literal notranslate"><span class="pre">Task.backend</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#quafu.Task.config"><code class="docutils literal notranslate"><span class="pre">Task.config()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#quafu.Task.retrieve"><code class="docutils literal notranslate"><span class="pre">Task.retrieve()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#quafu.Task.send"><code class="docutils literal notranslate"><span class="pre">Task.send()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quantum-elements">Quantum Elements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quafu.elements.quantum_element.Instruction"><code class="docutils literal notranslate"><span class="pre">Instruction</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quafu.elements.quantum_element.Instruction.pos"><code class="docutils literal notranslate"><span class="pre">Instruction.pos</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quafu.elements.quantum_element.Instruction.paras"><code class="docutils literal notranslate"><span class="pre">Instruction.paras</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quafu.elements.quantum_element.Instruction.name"><code class="docutils literal notranslate"><span class="pre">Instruction.name</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#quafu.results.results.Result"><code class="docutils literal notranslate"><span class="pre">Result</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#task-and-user">Task and User</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quafu.Task"><code class="docutils literal notranslate"><span class="pre">Task</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quafu.Task.shots"><code class="docutils literal notranslate"><span class="pre">Task.shots</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quafu.Task.compile"><code class="docutils literal notranslate"><span class="pre">Task.compile</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quafu.Task.tomo"><code class="docutils literal notranslate"><span class="pre">Task.tomo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quafu.Task.user"><code class="docutils literal notranslate"><span class="pre">Task.user</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quafu.Task.priority"><code class="docutils literal notranslate"><span class="pre">Task.priority</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quafu.Task.submit_history"><code class="docutils literal notranslate"><span class="pre">Task.submit_history</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quafu.Task.backend"><code class="docutils literal notranslate"><span class="pre">Task.backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quafu.Task.config"><code class="docutils literal notranslate"><span class="pre">Task.config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quafu.Task.retrieve"><code class="docutils literal notranslate"><span class="pre">Task.retrieve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quafu.Task.send"><code class="docutils literal notranslate"><span class="pre">Task.send()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quafu.User"><code class="docutils literal notranslate"><span class="pre">User</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quafu.User.get_available_backends"><code class="docutils literal notranslate"><span class="pre">User.get_available_backends()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quafu.User.save_apitoken"><code class="docutils literal notranslate"><span class="pre">User.save_apitoken()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quafu.results.results.Result"><code class="docutils literal notranslate"><span class="pre">Result</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../release_note/historical_version.html">Historical Version</a></li>
@@ -105,6 +120,8 @@
 <p class="admonition-title">Note</p>
 <p>This page is still under refinement, the contents you see may be incomplete at present.</p>
 </div>
+<section id="quantum-circuit">
+<span id="id1"></span><h2>Quantum Circuit<a class="headerlink" href="#quantum-circuit" title="Permalink to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="quafu.QuantumCircuit">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quafu.</span></span><span class="sig-name descname"><span class="pre">QuantumCircuit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quafu.QuantumCircuit" title="Permalink to this definition"></a></dt>
@@ -157,31 +174,48 @@
 
 </dd></dl>
 
+</section>
+<section id="quantum-elements">
+<h2>Quantum Elements<a class="headerlink" href="#quantum-elements" title="Permalink to this heading"></a></h2>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>hello</p>
+</div>
 <dl class="py class">
-<dt class="sig sig-object py" id="quafu.User">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quafu.</span></span><span class="sig-name descname"><span class="pre">User</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_token</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quafu.User" title="Permalink to this definition"></a></dt>
-<dd><dl class="field-list simple">
+<dt class="sig sig-object py" id="quafu.elements.quantum_element.Instruction">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quafu.elements.quantum_element.</span></span><span class="sig-name descname"><span class="pre">Instruction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paras</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quafu.elements.quantum_element.Instruction" title="Permalink to this definition"></a></dt>
+<dd><p>Base class for ALL the possible instructions on Quafu superconducting quantum circuits.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>api_token</strong> (<em>str</em>) – </p></li>
-<li><p><strong>token_dir</strong> (<em>str</em>) – </p></li>
+<li><p><strong>pos</strong> (<em>int</em><em> | </em><em>List</em><em>[</em><em>int</em><em>]</em>) – </p></li>
+<li><p><strong>paras</strong> (<em>float</em><em> | </em><em>int</em><em> | </em><em>List</em>) – </p></li>
 </ul>
 </dd>
 </dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="quafu.User.get_available_backends">
-<span class="sig-name descname"><span class="pre">get_available_backends</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">print_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quafu.User.get_available_backends" title="Permalink to this definition"></a></dt>
-<dd><p>Get available backends</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quafu.elements.quantum_element.Instruction.pos">
+<span class="sig-name descname"><span class="pre">pos</span></span><a class="headerlink" href="#quafu.elements.quantum_element.Instruction.pos" title="Permalink to this definition"></a></dt>
+<dd><p>Qubit position(s) of the instruction on the circuit.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="quafu.User.save_apitoken">
-<span class="sig-name descname"><span class="pre">save_apitoken</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">apitoken</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quafu.User.save_apitoken" title="Permalink to this definition"></a></dt>
-<dd><p>Save api-token associate your Quafu account.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quafu.elements.quantum_element.Instruction.paras">
+<span class="sig-name descname"><span class="pre">paras</span></span><a class="headerlink" href="#quafu.elements.quantum_element.Instruction.paras" title="Permalink to this definition"></a></dt>
+<dd><p>Parameters of the instruction.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="quafu.elements.quantum_element.Instruction.name">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#quafu.elements.quantum_element.Instruction.name" title="Permalink to this definition"></a></dt>
+<dd><p>Name of the instruction.</p>
 </dd></dl>
 
 </dd></dl>
 
+</section>
+<section id="task-and-user">
+<h2>Task and User<a class="headerlink" href="#task-and-user" title="Permalink to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="quafu.Task">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quafu.</span></span><span class="sig-name descname"><span class="pre">Task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quafu.Task" title="Permalink to this definition"></a></dt>
@@ -328,11 +362,37 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="quafu.User">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quafu.</span></span><span class="sig-name descname"><span class="pre">User</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_token</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quafu.User" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>api_token</strong> (<em>str</em>) – </p></li>
+<li><p><strong>token_dir</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="quafu.User.get_available_backends">
+<span class="sig-name descname"><span class="pre">get_available_backends</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">print_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quafu.User.get_available_backends" title="Permalink to this definition"></a></dt>
+<dd><p>Get available backends</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quafu.User.save_apitoken">
+<span class="sig-name descname"><span class="pre">save_apitoken</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">apitoken</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quafu.User.save_apitoken" title="Permalink to this definition"></a></dt>
+<dd><p>Save api-token associate your Quafu account.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="quafu.results.results.Result">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quafu.results.results.</span></span><span class="sig-name descname"><span class="pre">Result</span></span><a class="headerlink" href="#quafu.results.results.Result" title="Permalink to this definition"></a></dt>
 <dd><p>Basis class for quantum results</p>
 </dd></dl>
 
+</section>
 </section>
 
 

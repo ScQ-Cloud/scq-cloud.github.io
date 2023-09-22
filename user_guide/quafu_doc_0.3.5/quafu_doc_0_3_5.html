@@ -113,7 +113,7 @@ line/terminal:</p>
 <h2>Set up your Quafu account<a class="headerlink" href="#set-up-your-quafu-account" title="Permalink to this heading"></a></h2>
 <p>If you haven’t have an account, you may register on the
 <a class="reference external" href="http://quafu.baqis.ac.cn/">Quafu</a> website at first. Then you will
-find your apitoken <code class="docutils literal notranslate"><span class="pre">&lt;your</span> <span class="pre">API</span> <span class="pre">token&gt;</span></code>on the <code class="docutils literal notranslate"><span class="pre">Dashboard</span></code> page,
+find your apitoken <code class="docutils literal notranslate"><span class="pre">&lt;your</span> <span class="pre">API</span> <span class="pre">token&gt;</span></code> on the <code class="docutils literal notranslate"><span class="pre">Dashboard</span></code> page,
 which is required when you send tasks to ScQ-chips.</p>
 <p>By executing the following codes your token will be saved to your local
 device.</p>
@@ -171,11 +171,10 @@ circuit.</p>
 <span class="n">qc</span><span class="o">.</span><span class="n">add_gate</span><span class="p">(</span><span class="n">gate</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This is actually what ’<code class="docutils literal notranslate"><span class="pre">.name(args)</span></code> functions do. You would find
+<p>This is actually what <code class="docutils literal notranslate"><span class="pre">.name(args)</span></code> functions do. You would find
 the second style convenient when build a new circuit from existing one.</p>
-<p>For quantum gates Quafu supports, please check the API reference for
-<code class="docutils literal notranslate"><span class="pre">`QuantumCircuit</span></code> &lt;apiref/#quafu.QuantumCircuit&gt;`__ or use
-python-buitin <code class="docutils literal notranslate"><span class="pre">dir()</span></code> method.</p>
+<p>For quantum gates Quafu supports, please check the API reference for <a class="reference internal" href="../../apiref/apiref_0.3.5.html#quantum-circuit"><span class="std std-ref">Quantum Circuit</span></a>
+or use python-buitin <code class="docutils literal notranslate"><span class="pre">dir()</span></code> method.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">qc</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -202,8 +201,7 @@ no measurement information provided, all qubits are measured by default.</p>
 <h3>Visualize<a class="headerlink" href="#visualize" title="Permalink to this heading"></a></h3>
 <p>From <code class="docutils literal notranslate"><span class="pre">version=0.3.2</span></code>, <code class="docutils literal notranslate"><span class="pre">PyQuafu</span></code> provides two similiar ways to
 visualize quantum circuits. You can draw the circuit using the
-<code class="docutils literal notranslate"><span class="pre">`draw_circuit</span></code> &lt;apiref/#quafu.circuits.quantum_circuit.QuantumCircuit.draw_circuit&gt;`__
-method and use <code class="docutils literal notranslate"><span class="pre">width</span></code> parameter to adjust the length of the circuit.</p>
+<code class="docutils literal notranslate"><span class="pre">draw_circuit</span></code> method and use <code class="docutils literal notranslate"><span class="pre">width</span></code> parameter to adjust the length of the circuit.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span><span class="o">.</span><span class="n">draw_circuit</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -280,7 +278,7 @@ First, initialize a Task object</p>
 </pre></div>
 </div>
 <p>You can configure your task properties using the
-<code class="docutils literal notranslate"><span class="pre">`config</span></code> &lt;apiref/#quafu.tasks.tasks.Task.config&gt;`__ method. Here we
+<code class="docutils literal notranslate"><span class="pre">config</span></code> method. Here we
 choose the backend (<code class="docutils literal notranslate"><span class="pre">backend</span></code>) as <code class="docutils literal notranslate"><span class="pre">ScQ-P18</span></code>, the single shots number
 (<code class="docutils literal notranslate"><span class="pre">shots</span></code>) as 2000 and compile the circuit on the backend
 (<code class="docutils literal notranslate"><span class="pre">compile</span></code>).</p>
@@ -333,8 +331,7 @@ provide simple circuit similator</p>
 </div>
 <p>If you don’t want to plot the results for basis with zero probabilities,
 set the parameter <code class="docutils literal notranslate"><span class="pre">full</span></code> in method
-<code class="docutils literal notranslate"><span class="pre">`plot_probabilities</span></code> &lt;apiref/#quafu.results.results.SimuResult.plot_probabilities&gt;`__
-to False. Note that this parameter is only valid for results returned by
+<code class="docutils literal notranslate"><span class="pre">plot_probabilities</span></code> to False. Note that this parameter is only valid for results returned by
 the simulator.</p>
 <section id="a-subtle-detail">
 <h3>A Subtle detail<a class="headerlink" href="#a-subtle-detail" title="Permalink to this heading"></a></h3>
@@ -387,11 +384,11 @@ help</p>
 <h2>Measure observables<a class="headerlink" href="#measure-observables" title="Permalink to this heading"></a></h2>
 <p>Quafu provides measuring observables with an executed quantum circuit.
 You can input Pauli operators that need to measure expectation values to
-the <code class="docutils literal notranslate"><span class="pre">`submit</span></code> &lt;apiref/#quafu.tasks.tasks.Task.submit&gt;`__ method. For
+the <code class="docutils literal notranslate"><span class="pre">submit</span></code> &lt;apiref/#quafu.tasks.tasks.Task.submit&gt;`__ method. For
 example, you can input [[“XYX”, [0, 1, 2]], [“Z”, [1]]] to calculate the
 expectation of operators <span class="math notranslate nohighlight">\(\sigma^x_0\sigma^y_1\sigma^x_2\)</span> and
 <span class="math notranslate nohighlight">\(\sigma^z_1\)</span>. The
-<code class="docutils literal notranslate"><span class="pre">`submit</span></code> &lt;apiref/#quafu.tasks.tasks.Task.submit&gt;`__ method will
+<code class="docutils literal notranslate"><span class="pre">submit</span></code> &lt;apiref/#quafu.tasks.tasks.Task.submit&gt;`__ method will
 minimize the executing times of the circuit with different measurement
 basis that can calculate all expectations of input operators.</p>
 <p>Here we show how to measure the energy expectation of the Ising chain</p>
@@ -422,7 +419,7 @@ basis that can calculate all expectations of input operators.</p>
 </div>
 <p>Next, we set operators that need to be measured to calculate the energy
 expectation, and submit the circuit using
-<code class="docutils literal notranslate"><span class="pre">`submit</span></code> &lt;apiref/#quafu.tasks.tasks.Task.submit&gt;`__ method</p>
+<code class="docutils literal notranslate"><span class="pre">submit</span></code> method</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_Ising</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
 <span class="n">test_Ising</span><span class="o">.</span><span class="n">extend</span><span class="p">([[</span><span class="s2">&quot;ZZ&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)])</span>
 <span class="n">res</span><span class="p">,</span> <span class="n">obsexp</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">test_Ising</span><span class="p">)</span>
@@ -467,7 +464,7 @@ energy expectation</p>
 <h2>Submit task asynchronously<a class="headerlink" href="#submit-task-asynchronously" title="Permalink to this heading"></a></h2>
 <p>In the above examples, we chose opening python kernal and waiting for
 the result. You may also set the <code class="docutils literal notranslate"><span class="pre">wait=False</span></code> in
-<code class="docutils literal notranslate"><span class="pre">`send</span></code> &lt;apiref/#quafu.tasks.tasks.Task.send&gt;`__ function to submit
+<code class="docutils literal notranslate"><span class="pre">send</span></code> function to submit
 the task asynchronously. Here we use another example that measures the
 qubit decoherence time <span class="math notranslate nohighlight">\(T_1\)</span> to demonstrate the usage.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="n">Task</span><span class="p">()</span>
@@ -486,12 +483,12 @@ qubit decoherence time <span class="math notranslate nohighlight">\(T_1\)</span>
 </pre></div>
 </div>
 <p>Here the <code class="docutils literal notranslate"><span class="pre">delay</span></code> options will idle the target qubit <code class="docutils literal notranslate"><span class="pre">2</span></code> for a
-duration <code class="docutils literal notranslate"><span class="pre">t</span></code> in the time unit <code class="docutils literal notranslate"><span class="pre">us</span></code>(microsecond) and do nothing. In
+duration <code class="docutils literal notranslate"><span class="pre">t</span></code> in the time unit <code class="docutils literal notranslate"><span class="pre">us</span></code> (microsecond) and do nothing. In
 the send function, we set <code class="docutils literal notranslate"><span class="pre">wait</span></code> to false to execute the task
 asynchronously, give each task a name by duration time and set all tasks
 to a group named “Q3_T1”.</p>
 <p>Now we can try to retrieve the group of tasks using the
-<code class="docutils literal notranslate"><span class="pre">`retrieve_group</span></code> &lt;apiref/#quafu.tasks.tasks.Task.retrieve_group&gt;`__
+<code class="docutils literal notranslate"><span class="pre">retrieve_group</span></code>
 method.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group_res</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">retrieve_group</span><span class="p">(</span><span class="s2">&quot;Q3_T1&quot;</span><span class="p">)</span>
 <span class="n">probs</span> <span class="o">=</span> <span class="p">[</span><span class="n">res</span><span class="o">.</span><span class="n">probabilities</span><span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">group_res</span><span class="p">]</span>
