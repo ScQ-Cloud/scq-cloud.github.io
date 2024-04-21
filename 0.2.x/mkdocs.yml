@@ -1,0 +1,16 @@
+site_name: PyQuafu-Docs
+plugins:
+  - search
+  - mkdocstrings
+theme: readthedocs
+extra_javascript: 
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+  
+markdown_extensions:
+  - mdx_math:
+      enable_dollar_delimiter: True
+
+nav:
+  - PyQuafu:
+    - User guide: index.md
+    - API reference: apiref.md
