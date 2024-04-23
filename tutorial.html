@@ -308,7 +308,9 @@ know the topology of the backend well and submit a valid circuit.</p>
 <p>Send the quantum circuit to the backend and wait for the results.
 Note that, by default the <code class="docutils literal notranslate"><span class="pre">wait</span></code> option is set to be <code class="docutils literal notranslate"><span class="pre">False</span></code>, which
 means that you need use the <code class="docutils literal notranslate"><span class="pre">retrieve</span></code> method to fetch results when task is done.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+<span class="c1"># After task is done, you could fetch results as below</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">task</span><span class="o">-</span><span class="nb">id</span><span class="o">&gt;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can use the returned results to check the count and probability of
