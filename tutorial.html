@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Guide &mdash; PyQuafu-Docs 0.4.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=6c02275b"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="apiref.html" />
+    <link rel="prev" title="Welcome to PyQuafu’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PyQuafu-Docs
+          </a>
+              <div class="version">
+                0.4.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-up-your-quafu-account">Set up your Quafu account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-your-first-quantum-circuit">Build your first quantum circuit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#apply-gates">Apply Gates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#measure">Measure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualize">Visualize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#openqasm-support">OPENQASM Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parameter">Parameter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#execution-and-simulation">Execution and Simulation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#a-subtle-detail">A Subtle detail</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#measure-observables">Measure observables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#submit-task-asynchronously">Submit task asynchronously</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-usage">Advanced usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#apply-the-same-gate-repeatedly">Apply the same gate repeatedly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#join-two-quantum-circuits">Join two quantum circuits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reverse-a-quantum-circuit">Reverse a quantum circuit</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apiref.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyQuafu-Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">User Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tutorial.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="user-guide">
+<h1>User Guide<a class="headerlink" href="#user-guide" title="Link to this heading"></a></h1>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pyquafu</span></code> requires <code class="docutils literal notranslate"><span class="pre">python&gt;=3.8</span></code>. And it’s suggested to activate an
+individual virtual environment for it, see for axample
+<a class="reference external" href="https://github.com/ScQ-Cloud/quafu-tutorial/blob/main/python_skill/Use%20Python%20Virtual%20Environment.md">quafu-tutorial-venv</a>.</p>
+<p>For the latest stable version, run the following codes in the command
+line/terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pyquafu</span>
+</pre></div>
+</div>
+</section>
+<section id="set-up-your-quafu-account">
+<h2>Set up your Quafu account<a class="headerlink" href="#set-up-your-quafu-account" title="Link to this heading"></a></h2>
+<p>If you haven’t have an account, you may register on the
+<a class="reference external" href="http://quafu.baqis.ac.cn/">Quafu</a> website at first. Then you will
+find your apitoken <code class="docutils literal notranslate"><span class="pre">&lt;your</span> <span class="pre">API</span> <span class="pre">token&gt;</span></code> on the <code class="docutils literal notranslate"><span class="pre">Dashboard</span></code> page,
+which is required when you send tasks to ScQ-chips.</p>
+<p>By executing the following codes your token will be saved to your local
+device.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">quafu</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="s2">&quot;&lt;your API token&gt;&quot;</span><span class="p">)</span>
+<span class="n">user</span><span class="o">.</span><span class="n">save_apitoken</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Once you’ve done this, you may look over the available ScQ-chips in the
+experimental backends.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">available_backends</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">get_available_backends</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">system_name</span>      <span class="n">qubits</span>  <span class="n">status</span>
+<span class="n">ScQ</span><span class="o">-</span><span class="n">P10</span>          <span class="mi">10</span>      <span class="n">Offline</span>
+<span class="n">ScQ</span><span class="o">-</span><span class="n">P18</span>          <span class="mi">18</span>      <span class="kc">None</span> <span class="n">Status</span>
+<span class="n">Baiwang</span>          <span class="mi">136</span>     <span class="n">Online</span>
+<span class="n">ScQ</span><span class="o">-</span><span class="n">P102</span>         <span class="mi">102</span>     <span class="n">Offline</span>
+<span class="n">ScQ</span><span class="o">-</span><span class="n">P10C</span>         <span class="mi">10</span>      <span class="n">Maintenance</span>
+<span class="n">Miaofeng</span>         <span class="mi">108</span>     <span class="n">Online</span>
+<span class="n">Dongling</span>         <span class="mi">106</span>     <span class="n">Online</span>
+<span class="n">Haituo</span>           <span class="mi">105</span>     <span class="n">Online</span>
+<span class="n">Baihua</span>           <span class="mi">118</span>     <span class="n">Online</span>
+<span class="n">Yunmeng</span>          <span class="mi">156</span>     <span class="n">Online</span>
+<span class="n">Xiang</span>            <span class="mi">35</span>      <span class="n">Offline</span>
+</pre></div>
+</div>
+<p><em>Note</em>: The next time you visit <code class="docutils literal notranslate"><span class="pre">pyquafu</span></code>, you don’t have to save the
+token again. Yet a quafu token is not permanently validating, from time
+to time you may click <strong>``refresh``</strong> to get a new one on
+<a class="reference external" href="http://quafu.baqis.ac.cn/">Quafu</a> webpage .</p>
+</section>
+<section id="build-your-first-quantum-circuit">
+<h2>Build your first quantum circuit<a class="headerlink" href="#build-your-first-quantum-circuit" title="Link to this heading"></a></h2>
+<p>Let’s start by initializing a circuit with 5 qubits,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">quafu</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span>
+
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="apply-gates">
+<h3>Apply Gates<a class="headerlink" href="#apply-gates" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">PyQuafu</span></code> supports ‘<code class="docutils literal notranslate"><span class="pre">qc.name(args)</span></code>’ style to apply gates and also
+other instructions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cnot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">ry</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">rx</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">rz</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cz</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">quafu</span><span class="o">.</span><span class="n">circuits</span><span class="o">.</span><span class="n">quantum_circuit</span><span class="o">.</span><span class="n">QuantumCircuit</span> <span class="n">at</span> <span class="mh">0x1ffda5f5ad0</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Alternatively, you may manually instantiate a gate and add it to the
+circuit.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># equivalent to qc.x(0)</span>
+<span class="kn">from</span> <span class="nn">quafu.elements.element_gates</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">gate</span> <span class="o">=</span> <span class="n">XGate</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">add_gate</span><span class="p">(</span><span class="n">gate</span><span class="p">)</span>
+<span class="c1"># you may also use the left shift operator</span>
+<span class="c1"># qc &lt;&lt; XGate(pos=0)</span>
+</pre></div>
+</div>
+<p>This is actually what <code class="docutils literal notranslate"><span class="pre">.name(args)</span></code> functions do. You would find
+the second style convenient when build a new circuit from existing one.</p>
+<p>For quantum gates Quafu supports, please check the API reference for <a class="reference internal" href="apiref.html#quantum-circuit"><span class="std std-ref">Quantum Circuit</span></a>
+or use python-buitin <code class="docutils literal notranslate"><span class="pre">dir()</span></code> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">qc</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;__class__&#39;</span><span class="p">,</span> <span class="s1">&#39;__delattr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__dict__&#39;</span><span class="p">,</span> <span class="s1">&#39;__dir__&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;__eq__&#39;</span><span class="p">,</span> <span class="s1">&#39;__format__&#39;</span><span class="p">,</span> <span class="s1">&#39;__ge__&#39;</span><span class="p">,</span> <span class="s1">&#39;__getattribute__&#39;</span><span class="p">,</span> <span class="s1">&#39;__getstate__&#39;</span><span class="p">,</span> <span class="s1">&#39;__gt__&#39;</span><span class="p">,</span> <span class="s1">&#39;__hash__&#39;</span><span class="p">,</span> <span class="s1">&#39;__init__&#39;</span><span class="p">,</span> <span class="s1">&#39;__init_subclass__&#39;</span><span class="p">,</span> <span class="s1">&#39;__le__&#39;</span><span class="p">,</span> <span class="s1">&#39;__lt__&#39;</span><span class="p">,</span> <span class="s1">&#39;__module__&#39;</span><span class="p">,</span> <span class="s1">&#39;__ne__&#39;</span><span class="p">,</span> <span class="s1">&#39;__new__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reduce__&#39;</span><span class="p">,</span> <span class="s1">&#39;__reduce_ex__&#39;</span><span class="p">,</span> <span class="s1">&#39;__repr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__setattr__&#39;</span><span class="p">,</span> <span class="s1">&#39;__sizeof__&#39;</span><span class="p">,</span> <span class="s1">&#39;__str__&#39;</span><span class="p">,</span> <span class="s1">&#39;__subclasshook__&#39;</span><span class="p">,</span> <span class="s1">&#39;__weakref__&#39;</span><span class="p">,</span> <span class="s1">&#39;_used_qubits&#39;</span><span class="p">,</span> <span class="s1">&#39;add_gate&#39;</span><span class="p">,</span> <span class="s1">&#39;add_pulse&#39;</span><span class="p">,</span> <span class="s1">&#39;barrier&#39;</span><span class="p">,</span> <span class="s1">&#39;circuit&#39;</span><span class="p">,</span> <span class="s1">&#39;cnot&#39;</span><span class="p">,</span> <span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="s1">&#39;cs&#39;</span><span class="p">,</span> <span class="s1">&#39;ct&#39;</span><span class="p">,</span> <span class="s1">&#39;cx&#39;</span><span class="p">,</span> <span class="s1">&#39;cy&#39;</span><span class="p">,</span> <span class="s1">&#39;cz&#39;</span><span class="p">,</span> <span class="s1">&#39;delay&#39;</span><span class="p">,</span> <span class="s1">&#39;draw_circuit&#39;</span><span class="p">,</span> <span class="s1">&#39;fredkin&#39;</span><span class="p">,</span> <span class="s1">&#39;from_openqasm&#39;</span><span class="p">,</span> <span class="s1">&#39;gates&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;iswap&#39;</span><span class="p">,</span> <span class="s1">&#39;layered_circuit&#39;</span><span class="p">,</span> <span class="s1">&#39;mcx&#39;</span><span class="p">,</span> <span class="s1">&#39;mcy&#39;</span><span class="p">,</span> <span class="s1">&#39;mcz&#39;</span><span class="p">,</span> <span class="s1">&#39;measure&#39;</span><span class="p">,</span> <span class="s1">&#39;measures&#39;</span><span class="p">,</span> <span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="s1">&#39;openqasm&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;plot_circuit&#39;</span><span class="p">,</span> <span class="s1">&#39;rx&#39;</span><span class="p">,</span> <span class="s1">&#39;rxx&#39;</span><span class="p">,</span> <span class="s1">&#39;ry&#39;</span><span class="p">,</span> <span class="s1">&#39;ryy&#39;</span><span class="p">,</span> <span class="s1">&#39;rz&#39;</span><span class="p">,</span> <span class="s1">&#39;rzz&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;sdg&#39;</span><span class="p">,</span> <span class="s1">&#39;sw&#39;</span><span class="p">,</span> <span class="s1">&#39;swap&#39;</span><span class="p">,</span> <span class="s1">&#39;sx&#39;</span><span class="p">,</span> <span class="s1">&#39;sxdg&#39;</span><span class="p">,</span> <span class="s1">&#39;sy&#39;</span><span class="p">,</span> <span class="s1">&#39;sydg&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;tdg&#39;</span><span class="p">,</span> <span class="s1">&#39;to_openqasm&#39;</span><span class="p">,</span> <span class="s1">&#39;toffoli&#39;</span><span class="p">,</span> <span class="s1">&#39;unitary&#39;</span><span class="p">,</span> <span class="s1">&#39;used_qubits&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="measure">
+<h3>Measure<a class="headerlink" href="#measure" title="Link to this heading"></a></h3>
+<p>Add measurement information including qubits measured (<code class="docutils literal notranslate"><span class="pre">measures</span></code>) and
+the classical bits keeping the measured results (<code class="docutils literal notranslate"><span class="pre">cbits</span></code>). If there is
+no measurement information provided, all qubits are measured by default.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">measures</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">cbits</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">measures</span><span class="p">,</span>  <span class="n">cbits</span><span class="o">=</span><span class="n">cbits</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measures</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="visualize">
+<h3>Visualize<a class="headerlink" href="#visualize" title="Link to this heading"></a></h3>
+<p>From <code class="docutils literal notranslate"><span class="pre">version=0.3.2</span></code>, <code class="docutils literal notranslate"><span class="pre">PyQuafu</span></code> provides two similiar ways to
+visualize quantum circuits. You can draw the circuit using the
+<code class="docutils literal notranslate"><span class="pre">draw_circuit</span></code> method and use <code class="docutils literal notranslate"><span class="pre">width</span></code> parameter to adjust the length of the circuit.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span><span class="o">.</span><span class="n">draw_circuit</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="o">------</span><span class="n">X</span><span class="o">--------</span><span class="n">X</span><span class="o">--------------------</span> <span class="n">M</span><span class="o">-&gt;</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="o">------</span><span class="n">X</span><span class="o">--------+----</span><span class="n">RY</span><span class="p">(</span><span class="mf">1.571</span><span class="p">)</span><span class="o">-------</span> <span class="n">M</span><span class="o">-&gt;</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                     <span class="o">|</span>
+<span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="o">---------------*----</span><span class="n">RX</span><span class="p">(</span><span class="mf">3.142</span><span class="p">)</span><span class="o">----*--</span> <span class="n">M</span><span class="o">-&gt;</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                                       <span class="o">|</span>
+<span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>  <span class="o">--</span><span class="n">RZ</span><span class="p">(</span><span class="mf">0.100</span><span class="p">)</span><span class="o">----------------------</span><span class="n">Z</span><span class="o">--</span> <span class="n">M</span><span class="o">-&gt;</span><span class="n">c</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="n">q</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>  <span class="o">------------------------------------</span> <span class="n">M</span><span class="o">-&gt;</span><span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Alternatively, you may create a figure by</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span><span class="o">.</span><span class="n">plot_circuit</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;A Quantum Circuit&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">​</div>
+<div class="line"><img alt="png" src="_images/output_23_0.png" /> ​</div>
+</div>
+<p>The latter visualization uses <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> as the backend and you may
+save the figure as any format that <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> supports.</p>
+</section>
+<section id="openqasm-support">
+<h3>OPENQASM Support<a class="headerlink" href="#openqasm-support" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">pyquafu</span></code> is backward compatible with quantum gates in
+<a class="reference external" href="https://arxiv.org/abs/1707.03429">OPENQASM2.0</a>. You can store your
+quantum circuit as openqasm string, and also initialize your quantum
+circuit with openqasm text.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">qasm</span> <span class="o">=</span> <span class="n">qc</span><span class="o">.</span><span class="n">to_openqasm</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">qasm</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OPENQASM</span> <span class="mf">2.0</span><span class="p">;</span>
+<span class="n">include</span> <span class="s2">&quot;qelib1.inc&quot;</span><span class="p">;</span>
+<span class="n">qreg</span> <span class="n">q</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+<span class="n">creg</span> <span class="n">meas</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+<span class="n">x</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="n">x</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">cx</span> <span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">ry</span><span class="p">(</span><span class="mf">1.5707963267948966</span><span class="p">)</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">rx</span><span class="p">(</span><span class="mf">3.141592653589793</span><span class="p">)</span> <span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="n">rz</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span> <span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+<span class="n">cz</span> <span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+<span class="n">x</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="n">measure</span> <span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="n">meas</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="n">measure</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="n">meas</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">measure</span> <span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="n">meas</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="n">measure</span> <span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="n">meas</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+<span class="n">measure</span> <span class="n">q</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="n">meas</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>​</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">qc</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">from_openqasm</span><span class="p">(</span><span class="n">qasm</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">plot_circuit</span><span class="p">(</span><span class="s1">&#39;Recovered from QASM&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">​</div>
+<div class="line"><img alt="image1" src="_images/output_28_0.png" /> ​</div>
+</div>
+</section>
+<section id="parameter">
+<h3>Parameter<a class="headerlink" href="#parameter" title="Link to this heading"></a></h3>
+</section>
+</section>
+<section id="execution-and-simulation">
+<h2>Execution and Simulation<a class="headerlink" href="#execution-and-simulation" title="Link to this heading"></a></h2>
+<p>Now you are ready to submit the circuit to the experimental backend.
+First, initialize a Task object</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">quafu</span> <span class="kn">import</span> <span class="n">Task</span>
+<span class="n">task</span> <span class="o">=</span> <span class="n">Task</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You can configure your task properties using the
+<code class="docutils literal notranslate"><span class="pre">config</span></code> method. Here we
+choose the backend (<code class="docutils literal notranslate"><span class="pre">backend</span></code>) as <code class="docutils literal notranslate"><span class="pre">ScQ-P18</span></code>, the single shots number
+(<code class="docutils literal notranslate"><span class="pre">shots</span></code>) as 2000 and compile the circuit on the backend
+(<code class="docutils literal notranslate"><span class="pre">compile</span></code>).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;ScQ-P18&quot;</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="nb">compile</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you set the <code class="docutils literal notranslate"><span class="pre">compile</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">False</span></code>, make sure that you
+know the topology of the backend well and submit a valid circuit.</p>
+<p>Send the quantum circuit to the backend and wait for the results.
+Note that, by default the <code class="docutils literal notranslate"><span class="pre">wait</span></code> option is set to be <code class="docutils literal notranslate"><span class="pre">False</span></code>, which
+means that you need use the <code class="docutils literal notranslate"><span class="pre">retrieve</span></code> method to fetch results when task is done.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+<span class="c1"># After task is done, you could fetch results as below</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">task</span><span class="o">-</span><span class="nb">id</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can use the returned results to check the count and probability of
+each measured bit string. The output bits are arranged in <strong>big-endian</strong>
+convention by default, see also the next sectioin.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">counts</span><span class="p">)</span> <span class="c1">#counts</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">probabilities</span><span class="p">)</span> <span class="c1">#probabilities</span>
+<span class="n">res</span><span class="o">.</span><span class="n">plot_probabilities</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;00100&#39;</span><span class="p">,</span> <span class="mi">717</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;00110&#39;</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;01000&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;01100&#39;</span><span class="p">,</span> <span class="mi">1185</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;01110&#39;</span><span class="p">,</span> <span class="mi">39</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;10100&#39;</span><span class="p">,</span> <span class="mi">22</span><span class="p">)])</span>
+<span class="p">{</span><span class="s1">&#39;00100&#39;</span><span class="p">:</span> <span class="mf">0.3585</span><span class="p">,</span> <span class="s1">&#39;00110&#39;</span><span class="p">:</span> <span class="mf">0.0155</span><span class="p">,</span> <span class="s1">&#39;01000&#39;</span><span class="p">:</span> <span class="mf">0.003</span><span class="p">,</span> <span class="s1">&#39;01100&#39;</span><span class="p">:</span> <span class="mf">0.5925</span><span class="p">,</span> <span class="s1">&#39;01110&#39;</span><span class="p">:</span> <span class="mf">0.0195</span><span class="p">,</span> <span class="s1">&#39;10100&#39;</span><span class="p">:</span> <span class="mf">0.011</span><span class="p">}</span>
+</pre></div>
+</div>
+<figure class="align-default" id="id1">
+<img alt="png" src="_images/output_37_1.png" />
+<figcaption>
+<p><span class="caption-text">png</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The returned results contain also the <strong>compiled circuit</strong>, from which
+you may find optimization was made.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="o">.</span><span class="n">transpiled_circuit</span><span class="o">.</span><span class="n">plot_circuit</span><span class="p">(</span><span class="s2">&quot;Compiled Circuit&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">​</div>
+<div class="line"><img alt="image2" src="_images/output_39_0.png" /> ​</div>
+</div>
+<p>If you want to check the correctness of the executed results. Quafu
+provide simple circuit similator</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">quafu</span> <span class="kn">import</span> <span class="n">simulate</span>
+<span class="n">simu_res</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;probabilities&quot;</span><span class="p">)</span>
+<span class="n">simu_res</span><span class="o">.</span><span class="n">plot_probabilities</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">​</div>
+<div class="line"><img alt="image3" src="_images/output_41_0.png" /> ​</div>
+</div>
+<p>If you don’t want to plot the results for basis with zero probabilities,
+set the parameter <code class="docutils literal notranslate"><span class="pre">full</span></code> in method
+<code class="docutils literal notranslate"><span class="pre">plot_probabilities</span></code> to False. Note that this parameter is only valid for results returned by
+the simulator.</p>
+<section id="a-subtle-detail">
+<h3>A Subtle detail<a class="headerlink" href="#a-subtle-detail" title="Link to this heading"></a></h3>
+<p>There are two different conventions when writing a computational basis
+as a bit-string. That is, for example, to denote the state where only
+the first qubit is excited, some may write 10…000 while others use
+000…01. This subtle detail sometimes causes confusion and even serious
+error in computation. The following experiment demonstrates conventions
+used in <code class="docutils literal notranslate"><span class="pre">pyquafu</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">quafu</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">simulate</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>  <span class="c1"># |000&gt;</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># |100&gt; + |000&gt;</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">()</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">plot_probabilities</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">​</div>
+<div class="line"><img alt="image4" src="_images/output_45_0.png" /> ​</div>
+</div>
+<p>Here you see that in <code class="docutils literal notranslate"><span class="pre">pyquafu</span></code>, <code class="docutils literal notranslate"><span class="pre">counts</span></code> obeys so-called
+‘big-endian’. However, for some historical reasons, the state-vector use
+small-endian instead.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s1">&#39;state_vector&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">state_vector</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">state_tensor</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">state_vector</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">state_tensor</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">state_tensor</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">state_tensor</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mf">0.70710678</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span> <span class="mf">0.70710678</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">]</span>
+<span class="p">(</span><span class="mf">0.7071067811865475</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span><span class="p">)</span>
+<span class="p">(</span><span class="mf">0.7071067811865475</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span><span class="p">)</span>
+<span class="mi">0</span><span class="n">j</span>
+</pre></div>
+</div>
+<p>If this is not the convention you are used to, <code class="docutils literal notranslate"><span class="pre">ndarray.transpose</span></code> may
+help</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">state_tensor</span> <span class="o">=</span> <span class="n">state_tensor</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="measure-observables">
+<h2>Measure observables<a class="headerlink" href="#measure-observables" title="Link to this heading"></a></h2>
+<p>Quafu provides measuring observables with an executed quantum circuit.
+You can input Pauli operators that need to measure expectation values to
+the <code class="docutils literal notranslate"><span class="pre">submit</span></code> &lt;apiref/#quafu.tasks.tasks.Task.submit&gt;`__ method. For
+example, you can input [[“XYX”, [0, 1, 2]], [“Z”, [1]]] to calculate the
+expectation of operators <span class="math notranslate nohighlight">\(\sigma^x_0\sigma^y_1\sigma^x_2\)</span> and
+<span class="math notranslate nohighlight">\(\sigma^z_1\)</span>. The
+<code class="docutils literal notranslate"><span class="pre">submit</span></code> &lt;apiref/#quafu.tasks.tasks.Task.submit&gt;`__ method will
+minimize the executing times of the circuit with different measurement
+basis that can calculate all expectations of input operators.</p>
+<p>Here we show how to measure the energy expectation of the Ising chain</p>
+<div class="math notranslate nohighlight">
+\[H=\sum_i \sigma^z_i \sigma^z_{i+1} + g \sum_i \sigma^x_i.\]</div>
+<p>First, we initialize a circuit with three Hadamard gate</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="n">measures</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">q</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">measures</span><span class="p">)</span>
+<span class="n">q</span><span class="o">.</span><span class="n">draw_circuit</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="o">--</span><span class="n">H</span><span class="o">--</span> <span class="n">M</span><span class="o">-&gt;</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="o">-----</span> <span class="n">M</span><span class="o">-&gt;</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="o">--</span><span class="n">H</span><span class="o">--</span> <span class="n">M</span><span class="o">-&gt;</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>  <span class="o">-----</span> <span class="n">M</span><span class="o">-&gt;</span><span class="n">c</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="n">q</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>  <span class="o">--</span><span class="n">H</span><span class="o">--</span> <span class="n">M</span><span class="o">-&gt;</span><span class="n">c</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Next, we set operators that need to be measured to calculate the energy
+expectation, and submit the circuit using
+<code class="docutils literal notranslate"><span class="pre">submit</span></code> method</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_Ising</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+<span class="n">test_Ising</span><span class="o">.</span><span class="n">extend</span><span class="p">([[</span><span class="s2">&quot;ZZ&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)])</span>
+<span class="n">res</span><span class="p">,</span> <span class="n">obsexp</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">test_Ising</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Job</span> <span class="n">start</span><span class="p">,</span> <span class="n">need</span> <span class="n">measured</span> <span class="ow">in</span>  <span class="p">[[</span><span class="s1">&#39;XXXXX&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="p">[</span><span class="s1">&#39;ZZZZZ&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]]</span>
+</pre></div>
+</div>
+<p>The function return measurement results and operator expectations. The
+measurement results only contain two ExecResult objects since the
+circuit is only executed twice, with measurement basis [[‘XXXXX’, [0, 1,
+2, 3, 4]] and [‘ZZZZZ’, [0, 1, 2, 3, 4]]] respectively.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot_probabilities</span><span class="p">()</span>
+<span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot_probabilities</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">​</div>
+<div class="line"><img alt="image5" src="_images/output_55_0.png" /> ​</div>
+</div>
+<figure class="align-default" id="id2">
+<img alt="png" src="_images/output_55_1.png" />
+<figcaption>
+<p><span class="caption-text">png</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The return operator expectations (<code class="docutils literal notranslate"><span class="pre">obsexp</span></code>) is a list with a length
+equal to the input operator number. We can use it to calculate the
+energy expectation</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">obsexp</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">g</span><span class="o">*</span><span class="nb">sum</span><span class="p">(</span><span class="n">obsexp</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span><span class="o">+</span><span class="nb">sum</span><span class="p">(</span><span class="n">obsexp</span><span class="p">[</span><span class="mi">5</span><span class="p">:])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.046999999999999986</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.03699999999999998</span><span class="p">,</span> <span class="mf">0.998</span><span class="p">,</span> <span class="mf">0.00899999999999995</span><span class="p">,</span> <span class="mf">0.08499999999999996</span><span class="p">,</span> <span class="mf">0.08299999999999996</span><span class="p">,</span> <span class="mf">0.008999999999999952</span><span class="p">]</span>
+<span class="mf">1.7269999999999999</span>
+</pre></div>
+</div>
+</section>
+<section id="submit-task-asynchronously">
+<h2>Submit task asynchronously<a class="headerlink" href="#submit-task-asynchronously" title="Link to this heading"></a></h2>
+<p>In the above examples, we chose opening python kernal and waiting for
+the result. You may also submit the task asynchronously. Here we use another example that measures the
+qubit decoherence time <span class="math notranslate nohighlight">\(T_1\)</span> to demonstrate the usage.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="n">Task</span><span class="p">()</span>
+<span class="n">task</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;ScQ-P10&quot;</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="nb">compile</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">priority</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Prepare parameters of a group of tasks and send the task asynchronously.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">us&quot;</span> <span class="o">%</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ts</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">ts</span><span class="p">):</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;us&quot;</span><span class="p">)</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">measure</span><span class="p">([</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;Q3_T1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here the <code class="docutils literal notranslate"><span class="pre">delay</span></code> options will idle the target qubit <code class="docutils literal notranslate"><span class="pre">2</span></code> for a
+duration <code class="docutils literal notranslate"><span class="pre">t</span></code> in the time unit <code class="docutils literal notranslate"><span class="pre">us</span></code> (microsecond) and do nothing. In
+the send function, we set <code class="docutils literal notranslate"><span class="pre">wait</span></code> to false to execute the task
+asynchronously, give each task a name by duration time and set all tasks
+to a group named “Q3_T1”.</p>
+<p>Now we can try to retrieve the group of tasks using the
+<code class="docutils literal notranslate"><span class="pre">retrieve_group</span></code>
+method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group_res</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">retrieve_group</span><span class="p">(</span><span class="s2">&quot;Q3_T1&quot;</span><span class="p">)</span>
+<span class="n">probs</span> <span class="o">=</span> <span class="p">[</span><span class="n">res</span><span class="o">.</span><span class="n">probabilities</span><span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">group_res</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Group</span><span class="p">:</span>  <span class="n">Q3_T1</span>
+<span class="n">task_id</span>              <span class="n">task_name</span>      <span class="n">status</span>
+<span class="mi">326564501</span><span class="n">AF5CF47</span>     <span class="mi">0</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">32656450226701</span><span class="n">BD</span>     <span class="mi">1</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">326564502</span><span class="n">A80CC5D</span>     <span class="mi">2</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">3265645032</span><span class="n">D98C32</span>     <span class="mi">3</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">326564503</span><span class="n">AEFE7EA</span>     <span class="mi">4</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">326564600</span><span class="n">CFE2817</span>     <span class="mi">5</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">3265646014</span><span class="n">FFEA5F</span>     <span class="mi">6</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">326564601</span><span class="n">C2E9597</span>     <span class="mi">7</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">32656460240</span><span class="n">A93E6</span>     <span class="mi">8</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">326564602</span><span class="n">C15CFFB</span>     <span class="mi">9</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">3265646033</span><span class="n">EEBD20</span>     <span class="mi">10</span><span class="n">us</span>           <span class="n">Running</span>
+<span class="mi">326564603</span><span class="n">B1A478D</span>     <span class="mi">11</span><span class="n">us</span>           <span class="n">In</span> <span class="n">Queue</span>
+<span class="mi">3265647006</span><span class="n">C96D3D</span>     <span class="mi">12</span><span class="n">us</span>           <span class="n">In</span> <span class="n">Queue</span>
+<span class="mi">326564700</span><span class="n">F71B85A</span>     <span class="mi">13</span><span class="n">us</span>           <span class="n">In</span> <span class="n">Queue</span>
+<span class="mi">32656470204</span><span class="n">A3472</span>     <span class="mi">14</span><span class="n">us</span>           <span class="n">In</span> <span class="n">Queue</span>
+<span class="mi">32656470384</span><span class="n">DCD98</span>     <span class="mi">15</span><span class="n">us</span>           <span class="n">In</span> <span class="n">Queue</span>
+<span class="mi">3265648004</span><span class="n">FB6BCF</span>     <span class="mi">16</span><span class="n">us</span>           <span class="n">In</span> <span class="n">Queue</span>
+<span class="mi">326564800</span><span class="n">DA63F54</span>     <span class="mi">17</span><span class="n">us</span>           <span class="n">In</span> <span class="n">Queue</span>
+<span class="mi">3265648022</span><span class="n">DAC675</span>     <span class="mi">18</span><span class="n">us</span>           <span class="n">In</span> <span class="n">Queue</span>
+<span class="mi">3265648036</span><span class="n">F7EA24</span>     <span class="mi">19</span><span class="n">us</span>           <span class="n">In</span> <span class="n">Queue</span>
+<span class="mi">326564901</span><span class="n">AB566FF</span>     <span class="mi">20</span><span class="n">us</span>           <span class="n">In</span> <span class="n">Queue</span>
+</pre></div>
+</div>
+<p>Once all the tasks are completed, we can do the next step to get
+<span class="math notranslate nohighlight">\(T_1\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group_res</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">retrieve_group</span><span class="p">(</span><span class="s2">&quot;Q3_T1&quot;</span><span class="p">)</span>
+<span class="n">probs</span> <span class="o">=</span> <span class="p">[</span><span class="n">res</span><span class="o">.</span><span class="n">probabilities</span><span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">group_res</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Group</span><span class="p">:</span>  <span class="n">Q3_T1</span>
+<span class="n">task_id</span>              <span class="n">task_name</span>      <span class="n">status</span>
+<span class="mi">326564501</span><span class="n">AF5CF47</span>     <span class="mi">0</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">32656450226701</span><span class="n">BD</span>     <span class="mi">1</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">326564502</span><span class="n">A80CC5D</span>     <span class="mi">2</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">3265645032</span><span class="n">D98C32</span>     <span class="mi">3</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">326564503</span><span class="n">AEFE7EA</span>     <span class="mi">4</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">326564600</span><span class="n">CFE2817</span>     <span class="mi">5</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">3265646014</span><span class="n">FFEA5F</span>     <span class="mi">6</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">326564601</span><span class="n">C2E9597</span>     <span class="mi">7</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">32656460240</span><span class="n">A93E6</span>     <span class="mi">8</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">326564602</span><span class="n">C15CFFB</span>     <span class="mi">9</span><span class="n">us</span>            <span class="n">Completed</span>
+<span class="mi">3265646033</span><span class="n">EEBD20</span>     <span class="mi">10</span><span class="n">us</span>           <span class="n">Completed</span>
+<span class="mi">326564603</span><span class="n">B1A478D</span>     <span class="mi">11</span><span class="n">us</span>           <span class="n">Completed</span>
+<span class="mi">3265647006</span><span class="n">C96D3D</span>     <span class="mi">12</span><span class="n">us</span>           <span class="n">Completed</span>
+<span class="mi">326564700</span><span class="n">F71B85A</span>     <span class="mi">13</span><span class="n">us</span>           <span class="n">Completed</span>
+<span class="mi">32656470204</span><span class="n">A3472</span>     <span class="mi">14</span><span class="n">us</span>           <span class="n">Completed</span>
+<span class="mi">32656470384</span><span class="n">DCD98</span>     <span class="mi">15</span><span class="n">us</span>           <span class="n">Completed</span>
+<span class="mi">3265648004</span><span class="n">FB6BCF</span>     <span class="mi">16</span><span class="n">us</span>           <span class="n">Completed</span>
+<span class="mi">326564800</span><span class="n">DA63F54</span>     <span class="mi">17</span><span class="n">us</span>           <span class="n">Completed</span>
+<span class="mi">3265648022</span><span class="n">DAC675</span>     <span class="mi">18</span><span class="n">us</span>           <span class="n">Completed</span>
+<span class="mi">3265648036</span><span class="n">F7EA24</span>     <span class="mi">19</span><span class="n">us</span>           <span class="n">Completed</span>
+<span class="mi">326564901</span><span class="n">AB566FF</span>     <span class="mi">20</span><span class="n">us</span>           <span class="n">Completed</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">b</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">paras</span><span class="p">,</span> <span class="n">pconv</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="n">probs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">probs</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">func</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="o">*</span><span class="n">paras</span><span class="p">),</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$t (\mu s)$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;prob&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$T_1=</span><span class="si">%.2f</span><span class="s2"> \mu s$&quot;</span> <span class="o">%</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">paras</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Text</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="s1">&#39;$T_1=24.18 </span><span class="se">\\</span><span class="s1">mu s$&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">​</div>
+<div class="line"><img alt="image6" src="_images/output_67_1.png" /> ​</div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">group_name</span></code> and submite history are kept in the <code class="docutils literal notranslate"><span class="pre">task</span></code>
+object only when <code class="docutils literal notranslate"><span class="pre">python</span></code> kernal is running. For data persistence, we
+provide <code class="docutils literal notranslate"><span class="pre">TaskDatabase</span></code> which use <code class="docutils literal notranslate"><span class="pre">qslite3</span></code> as the backend. It may
+help you to save task information to your local computer.</p>
+<p>We would not devote too much into developing <code class="docutils literal notranslate"><span class="pre">TaskDatabase</span></code> since the
+web-backends will prodive more powerful and convenient usages in the
+future. However, if you are interested in manipulating database freely
+by <code class="docutils literal notranslate"><span class="pre">qslite3</span></code>, we do provide
+<a class="reference external" href="https://github.com/ScQ-Cloud/quafu-tutorial/tree/main/python_skill">tutorial</a>
+for a quick start.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">quafu.tasks.task_database</span> <span class="kn">import</span> <span class="n">QuafuTaskDatabase</span><span class="p">,</span> <span class="n">print_task_info</span>
+
+<span class="k">with</span> <span class="n">QuafuTaskDatabase</span><span class="p">()</span> <span class="k">as</span> <span class="n">db</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">group_res</span><span class="p">:</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">insert_task</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">taskid</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">task_status</span><span class="p">,</span> <span class="n">group_name</span><span class="o">=</span><span class="s2">&quot;Q3_T1&quot;</span><span class="p">,</span> <span class="n">task_name</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">taskname</span><span class="p">,</span> <span class="n">priority</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tasks info stored&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Task list:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">task_info</span> <span class="ow">in</span> <span class="n">db</span><span class="o">.</span><span class="n">find_all_tasks</span><span class="p">():</span>
+        <span class="n">print_task_info</span><span class="p">(</span><span class="n">task_info</span><span class="p">)</span>
+        <span class="k">break</span>  <span class="c1"># this is to avoid demo too long, you may cancel this line to view the whole info</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Tasks</span> <span class="n">info</span> <span class="n">stored</span>
+<span class="n">Task</span> <span class="nb">list</span><span class="p">:</span>
+<span class="n">Task</span> <span class="n">ID</span><span class="p">:</span> <span class="mi">326564501</span><span class="n">AF5CF47</span>
+<span class="n">Group</span> <span class="n">Name</span><span class="p">:</span> <span class="n">Q3_T1</span>
+<span class="n">Task</span> <span class="n">Name</span><span class="p">:</span> <span class="mi">0</span><span class="n">us</span>
+<span class="n">Status</span><span class="p">:</span> <span class="n">Completed</span>
+<span class="n">Priority</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">Send</span> <span class="n">Time</span><span class="p">:</span> <span class="kc">None</span>
+<span class="n">Finish</span> <span class="n">Time</span><span class="p">:</span> <span class="kc">None</span>
+<span class="o">------------------------</span>
+</pre></div>
+</div>
+<p>Finally, you can also retrieve a single task using its unique
+<code class="docutils literal notranslate"><span class="pre">task_id</span></code>, and download all the historical tasks in
+<a class="reference external" href="http://quafu.baqis.ac.cn/">Quafu</a> webpage.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res_20us</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="s2">&quot;1663B8403AE76050&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res_20us</span><span class="o">.</span><span class="n">probabilities</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;0&#39;</span><span class="p">:</span> <span class="mf">0.662</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span> <span class="mf">0.338</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="advanced-usage">
+<h2>Advanced usage<a class="headerlink" href="#advanced-usage" title="Link to this heading"></a></h2>
+<p>We offer some methods to build a quantum circuit more efficiently.</p>
+<section id="apply-the-same-gate-repeatedly">
+<h3>Apply the same gate repeatedly<a class="headerlink" href="#apply-the-same-gate-repeatedly" title="Link to this heading"></a></h3>
+<p>Could use the <code class="docutils literal notranslate"><span class="pre">power()</span></code> method to apply the same gate consecutively.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">quafu</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">simulate</span>
+<span class="kn">from</span> <span class="nn">quafu.elements.element_gates</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">HGate</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">HGate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">U3Gate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">U3Gate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">RYYGate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">RYYGate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">RXGate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">RXGate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">CRYGate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.23</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">CRYGate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.23</span><span class="p">)</span>
+
+<span class="c1"># Create another circuit using `power` method</span>
+<span class="n">q1</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">&lt;&lt;</span> <span class="n">HGate</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">&lt;&lt;</span> <span class="n">HGate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">&lt;&lt;</span> <span class="n">U3Gate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">&lt;&lt;</span> <span class="n">RYYGate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">)</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">&lt;&lt;</span> <span class="n">RXGate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">&lt;&lt;</span> <span class="n">CRYGate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.23</span><span class="p">)</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">sv1</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">()</span>
+<span class="n">sv2</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">q1</span><span class="p">)</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">()</span>
+
+<span class="c1"># Check equivalence of two circuits</span>
+<span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">sv1</span><span class="p">,</span> <span class="n">sv2</span><span class="o">.</span><span class="n">conj</span><span class="p">())),</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="join-two-quantum-circuits">
+<h3>Join two quantum circuits<a class="headerlink" href="#join-two-quantum-circuits" title="Link to this heading"></a></h3>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">join()</span></code> method to merge two different quantum circuit.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">quafu</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">simulate</span>
+<span class="kn">from</span> <span class="nn">quafu.elements.element_gates</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">XGate</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">CXGate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">q1</span> <span class="o">=</span>  <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">&lt;&lt;</span> <span class="n">HGate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">CXGate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># This extends the circuit `q` to 4 qubits,</span>
+<span class="c1"># and apply `q1` to the 3rd and 4th qubit of `q`</span>
+<span class="n">q</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">q</span><span class="o">.</span><span class="n">draw_circuit</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="o">-------*-------</span>
+             <span class="o">|</span>
+<span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="o">--</span><span class="n">X</span><span class="o">----|-------</span>
+             <span class="o">|</span>
+<span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="o">-------+----+--</span>
+                  <span class="o">|</span>
+<span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>  <span class="o">--</span><span class="n">H</span><span class="o">---------*--</span>
+</pre></div>
+</div>
+</section>
+<section id="reverse-a-quantum-circuit">
+<h3>Reverse a quantum circuit<a class="headerlink" href="#reverse-a-quantum-circuit" title="Link to this heading"></a></h3>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">dagger()</span></code> method to reverse a quantum circuit.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">quafu</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">simulate</span>
+<span class="kn">from</span> <span class="nn">quafu.elements.element_gates</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">HGate</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">HGate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">HGate</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">RXGate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">RYGate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">CXGate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">CRZGate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">RXXGate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
+
+<span class="c1"># Now create a reversed circuit of q</span>
+<span class="n">q1</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">&lt;&lt;</span> <span class="n">RXXGate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">&lt;&lt;</span> <span class="n">CRZGate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">&lt;&lt;</span> <span class="n">CXGate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">&lt;&lt;</span> <span class="n">RYGate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">&lt;&lt;</span> <span class="n">RXGate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">&lt;&lt;</span> <span class="n">HGate</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">&lt;&lt;</span> <span class="n">HGate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">&lt;&lt;</span> <span class="n">HGate</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Check equivalence</span>
+<span class="n">sv0</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">dagger</span><span class="p">())</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">()</span>
+<span class="n">sv1</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">q1</span><span class="p">)</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">()</span>
+<span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">sv0</span><span class="p">,</span> <span class="n">sv1</span><span class="o">.</span><span class="n">conj</span><span class="p">())),</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to PyQuafu’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="apiref.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, BAQIS-ScQ-Cloud.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    Version: latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    
+    <dl>
+      <dt>Versions</dt>
+      
+        <dd><a href="https://scq-cloud.github.io/0.2.x/index.html">0.2.x</a></dd>
+      
+        <dd><a href="https://scq-cloud.github.io/0.3.x/index.html">0.3.x</a></dd>
+      
+        <dd><a href="https://scq-cloud.github.io/0.4.0/index.html">0.4.0</a></dd>
+      
+    </dl>
+    
+    <br>
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
